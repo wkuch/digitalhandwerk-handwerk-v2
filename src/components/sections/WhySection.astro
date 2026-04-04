@@ -1,0 +1,77 @@
+---
+import Container from "@/components/layout/Container.astro";
+import SectionLabel from "@/components/shared/SectionLabel.astro";
+import ScrollReveal from "@/components/shared/ScrollReveal.astro";
+---
+<section class="bg-surface py-[clamp(80px,10vw,160px)]">
+  <Container>
+    <ScrollReveal>
+      <SectionLabel text="Der Unterschied" />
+      <h2 class="mb-16 max-w-lg font-heading text-3xl text-text sm:text-4xl">
+        Warum DigitalHandwerk?
+      </h2>
+    </ScrollReveal>
+
+    <!-- Alternating spotlight layout instead of card grid -->
+    <div class="space-y-16 md:space-y-24">
+      <!-- Row 1 -->
+      <ScrollReveal>
+        <div class="grid items-center gap-8 md:grid-cols-[1fr_1.2fr]">
+          <div>
+            <h3 class="mb-3 font-heading text-2xl text-text sm:text-3xl">Schnelle Umsetzung</h3>
+            <div class="h-0.5 w-12 bg-accent"></div>
+          </div>
+          <p class="text-lg leading-relaxed text-text-secondary">
+            Inhalte, Design und Technik greifen ineinander. Kein wochenlanges Warten,
+            kein endloses Hin und Her. Ihr Betrieb braucht Anfragen, nicht Abstimmungsschleifen.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <!-- Row 2 (reversed) -->
+      <ScrollReveal>
+        <div class="grid items-center gap-8 md:grid-cols-[1.2fr_1fr]">
+          <p class="order-2 text-lg leading-relaxed text-text-secondary md:order-1">
+            DSGVO, SSL, saubere Seitenstruktur und schnelle Ladezeiten. Ihre Seite
+            ist nicht nur rechtssicher, sondern auch für Google optimiert. Damit
+            Sie gefunden werden, wenn Kunden nach Ihrem Gewerk suchen.
+          </p>
+          <div class="order-1 md:order-2 md:text-right">
+            <h3 class="mb-3 font-heading text-2xl text-text sm:text-3xl">Rechtssicher & SEO-optimiert</h3>
+            <div class="ml-auto h-0.5 w-12 bg-accent md:mr-0"></div>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <!-- Row 3 -->
+      <ScrollReveal>
+        <div class="grid items-center gap-8 md:grid-cols-[1fr_1.2fr]">
+          <div>
+            <h3 class="mb-3 font-heading text-2xl text-text sm:text-3xl">Handwerk im Fokus</h3>
+            <div class="h-0.5 w-12 bg-accent"></div>
+          </div>
+          <p class="text-lg leading-relaxed text-text-secondary">
+            Texte, Bilder und Argumente, die zu Ihrem Betrieb und Ihren Kunden passen.
+            Keine generische Vorlage, sondern eine Seite, die Ihren Handwerksbetrieb
+            so zeigt, wie er ist.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <!-- Row 4 (reversed) -->
+      <ScrollReveal>
+        <div class="grid items-center gap-8 md:grid-cols-[1.2fr_1fr]">
+          <p class="order-2 text-lg leading-relaxed text-text-secondary md:order-1">
+            Klarer Festpreis, keine versteckten Kosten.
+            Jederzeit erweiterbar, wenn Ihr Betrieb wächst. Ich verdiene mein Geld
+            mit guter Arbeit, nicht mit Vertragsklauseln.
+          </p>
+          <div class="order-1 md:order-2 md:text-right">
+            <h3 class="mb-3 font-heading text-2xl text-text sm:text-3xl">Faire Pakete</h3>
+            <div class="ml-auto h-0.5 w-12 bg-accent md:mr-0"></div>
+          </div>
+        </div>
+      </ScrollReveal>
+    </div>
+  </Container>
+</section>

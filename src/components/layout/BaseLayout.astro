@@ -1,0 +1,148 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Handwerker Website ab 499 € Festpreis | DigitalHandwerk",
+  description = "Professionelle Website für Ihren Handwerksbetrieb. DSGVO-konform, mobil-optimiert, inkl. Kontaktformular & SEO. Deutschlandweit. Jetzt kostenloses Erstgespräch vereinbaren.",
+  canonical = Astro.url.href,
+  ogImage = "/og-image.webp",
+} = Astro.props;
+---
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Handwerker Website, Webseite Handwerk, Elektriker Website, Sanitär Website, Kfz Website, DSGVO, Karlsruhe, professionelle Webseite" />
+    <meta name="author" content="Wanja Mensch – DigitalHandwerk" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Geo -->
+    <meta name="geo.region" content="DE-BW" />
+    <meta name="geo.placename" content="Karlsruhe" />
+    <meta name="geo.position" content="49.0069;8.4037" />
+    <meta name="ICBM" content="49.0069, 8.4037" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="DigitalHandwerk" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+
+    <!-- Language -->
+    <link rel="alternate" hreflang="de" href={canonical} />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://api.web3forms.com" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#047857" />
+
+    <!-- Font Preloads -->
+    <link rel="preload" href="/fonts/instrument-serif-v5-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-v20-latin-500.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "DigitalHandwerk – Wanja Mensch",
+      "description": "Webdesign für Handwerksbetriebe: professionelle, DSGVO-konforme Websites ab 499 € Festpreis. Persönliche Beratung, schnelle Umsetzung, deutschlandweit.",
+      "url": "https://www.digitalhandwerk-mensch.de",
+      "telephone": "+4915733962986",
+      "email": "kontakt@digitalhandwerk-mensch.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Im Haberacker 3A",
+        "addressLocality": "Karlsruhe",
+        "postalCode": "76227",
+        "addressRegion": "BW",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.0069,
+        "longitude": 8.4037
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Deutschland"
+      },
+      "priceRange": "ab 499€",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Wanja Mensch",
+        "jobTitle": "Webentwickler & Digitalberater"
+      }
+    })} />
+
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-white">
+      Zum Inhalt springen
+    </a>
+    <slot />
+    <script>
+      function initScrollReveal() {
+        const elements = document.querySelectorAll("[data-reveal]");
+        if (!elements.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.setAttribute("data-visible", "");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
+        );
+
+        elements.forEach((el) => observer.observe(el));
+      }
+
+      // Run after DOM is ready
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initScrollReveal);
+      } else {
+        initScrollReveal();
+      }
+    </script>
+  </body>
+</html>

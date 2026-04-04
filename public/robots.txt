@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.digitalhandwerk-mensch.de/sitemap-index.xml

@@ -1,0 +1,77 @@
+---
+import Container from "@/components/layout/Container.astro";
+import SectionLabel from "@/components/shared/SectionLabel.astro";
+import ScrollReveal from "@/components/shared/ScrollReveal.astro";
+import { Image } from "astro:assets";
+import portraitImg from "@/assets/portrait_wanja.jpg";
+---
+<section id="ueber-mich" class="bg-accent-surface/30 py-[clamp(80px,10vw,160px)]">
+  <Container>
+    <div class="grid items-center gap-12 md:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      <!-- Portrait -->
+      <ScrollReveal>
+        <div class="relative">
+          <Image
+            src={portraitImg}
+            alt="Wanja Mensch – Webentwickler und Digitalberater"
+            class="w-full max-w-sm rounded-2xl object-cover shadow-lg"
+            widths={[400, 600]}
+            sizes="(max-width: 768px) 100vw, 40vw"
+          />
+          <!-- Decorative -->
+          <div class="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-2xl border border-accent/20" aria-hidden="true"></div>
+        </div>
+      </ScrollReveal>
+
+      <!-- Content -->
+      <div>
+        <ScrollReveal>
+          <SectionLabel text="Ihr Ansprechpartner" />
+          <h2 class="mb-2 font-heading text-3xl text-text sm:text-4xl">Wanja Mensch</h2>
+          <p class="mb-8 text-lg text-text-secondary">Webentwickler & Digitalberater</p>
+        </ScrollReveal>
+
+        <ScrollReveal delay={100}>
+          <p class="mb-8 max-w-lg text-text-secondary leading-relaxed">
+            Mit jahrelanger Erfahrung in der Webentwicklung und einem tiefen Verständnis
+            für die Bedürfnisse von Handwerksbetrieben setze ich Webseiten um, die
+            Ergebnisse liefern. Nicht nur hübsch aussehen.
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal delay={200}>
+          <div class="mb-8 space-y-5">
+            <div class="flex items-start gap-4">
+              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent"></span>
+              <div>
+                <h4 class="font-medium text-text">Direkter Draht</h4>
+                <p class="text-sm text-text-secondary">Klare Empfehlungen, fester Ansprechpartner. Keine Agentur-Floskeln.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent"></span>
+              <div>
+                <h4 class="font-medium text-text">Für echte Handwerker</h4>
+                <p class="text-sm text-text-secondary">Leistungen und Inhalte, die Ihren Betrieb verständlich und überzeugend präsentieren.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent"></span>
+              <div>
+                <h4 class="font-medium text-text">Mitdenken bis zur Anfrage</h4>
+                <p class="text-sm text-text-secondary">Struktur, Calls-to-Action und Kontaktwege sind auf Kundenanfragen optimiert.</p>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={300}>
+          <blockquote class="border-l-2 border-accent/40 pl-5 italic text-text-secondary">
+            &bdquo;Ich glaube an ehrliche Beratung, saubere Umsetzung und
+            offene Kommunikation auf Augenhöhe.&ldquo;
+          </blockquote>
+        </ScrollReveal>
+      </div>
+    </div>
+  </Container>
+</section>

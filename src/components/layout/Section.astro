@@ -1,0 +1,18 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  dark?: boolean;
+}
+const { id, class: className, dark = false } = Astro.props;
+---
+<section
+  id={id}
+  class:list={[
+    "py-[clamp(80px,10vw,160px)]",
+    dark ? "bg-dark text-dark-text" : "bg-bg",
+    className,
+  ]}
+>
+  <slot />
+</section>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from "@/components/layout/BaseLayout.astro";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import Hero from "@/components/sections/Hero.astro";
+import WhySection from "@/components/sections/WhySection.astro";
+import PackagesSection from "@/components/sections/PackagesSection.astro";
+import ProcessSection from "@/components/sections/ProcessSection.astro";
+import ReferencesSection from "@/components/sections/ReferencesSection.astro";
+import AboutSection from "@/components/sections/AboutSection.astro";
+import FaqSection from "@/components/sections/FaqSection.astro";
+import ContactSection from "@/components/sections/ContactSection.astro";
+---
+<BaseLayout>
+  <Header />
+  <main id="main">
+    <Hero />
+    <WhySection />
+    <PackagesSection />
+    <ProcessSection />
+    <ReferencesSection />
+    <AboutSection />
+    <FaqSection />
+    <ContactSection />
+  </main>
+  <Footer />
+
+  <!-- Service Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Webdesign für Handwerksbetriebe",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "DigitalHandwerk – Wanja Mensch",
+      "url": "https://www.digitalhandwerk-mensch.de"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Deutschland"
+    },
+    "description": "Professionelle, DSGVO-konforme Websites für Handwerksbetriebe. One-Page Webseite mit Kontaktformular, SEO-Optimierung und persönlicher Beratung.",
+    "offers": {
+      "@type": "Offer",
+      "price": "499",
+      "priceCurrency": "EUR",
+      "description": "Professionelle One-Page Website inkl. Kontaktformular, SEO, DSGVO-Konformität und persönlicher Beratung"
+    }
+  })} />
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Was kostet eine Website für Handwerker?", "acceptedAnswer": { "@type": "Answer", "text": "Eine professionelle Handwerker-Website kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Darin enthalten: professionelle One-Page Webseite, mobil-optimiertes Design, Kontaktformular, DSGVO-konforme Umsetzung mit Impressum und Datenschutzerklärung, SEO-Optimierung mit Meta-Tags und Sitemap sowie persönliche Beratung. Hosting und Domain sind optional ab 5 €/Monat verfügbar, Wartung ebenfalls ab 5 €/Monat – beides monatlich kündbar." }},
+      { "@type": "Question", "name": "Ist die Handwerker-Website DSGVO-konform?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, jede Website wird vollständig DSGVO-konform umgesetzt. Das beinhaltet: SSL-Verschlüsselung, rechtssicheres Impressum, Datenschutzerklärung, datenschutzkonforme Kontaktformulare und selbst gehostete Schriftarten (kein Google Fonts). Es werden keine Tracking-Cookies oder Analyse-Tools eingesetzt. Das Hosting ist datenschutzkonform wählbar." }},
+      { "@type": "Question", "name": "Bekomme ich durch die Website neue Kunden?", "acceptedAnswer": { "@type": "Answer", "text": "Die Website wird gezielt auf Kundengewinnung ausgelegt: saubere SEO-Grundlagen sorgen dafür, dass Sie bei Google gefunden werden, schnelle Ladezeiten verbessern das Ranking, klar dargestellte Leistungen schaffen Vertrauen und gut sichtbare Kontaktmöglichkeiten (Telefon, E-Mail, Formular) senken die Hemmschwelle für Anfragen. Alles ist darauf optimiert, dass potenzielle Kunden Sie finden und direkt kontaktieren." }},
+      { "@type": "Question", "name": "Wie läuft die Erstellung einer Handwerker-Website ab?", "acceptedAnswer": { "@type": "Answer", "text": "Der Ablauf ist einfach und planbar: 1. Kostenloses Erstgespräch – ich höre zu und verstehe, was Ihr Betrieb braucht. 2. Konzept und Design – Sie sehen vorab, wie Ihre Seite aussehen wird. 3. Umsetzung und Livegang – technische Umsetzung, Tests auf allen Geräten. 4. Optional: laufende Wartung und Support. Sie können so viel oder wenig mitwirken, wie Sie möchten – von einem 30-Minuten-Telefonat bis zur engen Abstimmung bei jedem Schritt." }},
+      { "@type": "Question", "name": "Gehört mir die Website oder bin ich an einen Anbieter gebunden?", "acceptedAnswer": { "@type": "Answer", "text": "Die Website gehört Ihnen – kein Lock-in, keine Abhängigkeit. Sie erhalten vollen Zugriff auf den gesamten Code und alle Inhalte. Ein Anbieterwechsel ist jederzeit möglich, ohne Datenverlust oder zusätzliche Kosten. Sie sind nicht an ein bestimmtes Baukastensystem oder einen Hosting-Anbieter gebunden." }},
+      { "@type": "Question", "name": "Kann ich die Website später erweitern?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, Ihre Website ist jederzeit erweiterbar. Mögliche Erweiterungen umfassen: Bildergalerie für Referenzprojekte, Online-Terminbuchung, Mehrsprachigkeit, zusätzliche Unterseiten für einzelne Leistungen, Google Maps Integration und mehr. Erweiterungen werden individuell besprochen und fair bepreist." }}
+    ]
+  })} />
+</BaseLayout>

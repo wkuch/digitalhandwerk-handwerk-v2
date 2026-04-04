@@ -1,0 +1,65 @@
+---
+import Container from "@/components/layout/Container.astro";
+import SectionLabel from "@/components/shared/SectionLabel.astro";
+import ScrollReveal from "@/components/shared/ScrollReveal.astro";
+
+const steps = [
+  {
+    num: "01",
+    title: "Beratung",
+    desc: "Kostenloses Erstgespräch. Ich höre zu, stelle Fragen und verstehe, was Ihr Betrieb braucht.",
+  },
+  {
+    num: "02",
+    title: "Konzept & Design",
+    desc: "Maßgeschneidertes Konzept für Ihren Betrieb. Sie sehen vorab, wie Ihre Seite aussehen wird.",
+  },
+  {
+    num: "03",
+    title: "Umsetzung & Launch",
+    desc: "Technische Umsetzung, Tests auf allen Geräten und Livegang. Sie bekommen eine fertige Seite.",
+  },
+  {
+    num: "04",
+    title: "Wartung & Support",
+    desc: "Auf Wunsch betreue ich Ihre Seite weiter: Updates, Anpassungen, Support.",
+  },
+];
+---
+<section id="ablauf" class="bg-surface py-[clamp(80px,10vw,160px)]">
+  <Container>
+    <ScrollReveal>
+      <SectionLabel text="So läuft es ab" />
+      <h2 class="mb-6 max-w-md font-heading text-3xl text-text sm:text-4xl">
+        Vier Schritte zu Ihrer neuen Webseite
+      </h2>
+      <p class="mb-16 max-w-lg text-text-secondary">
+        Vom Erstgespräch bis zum Livegang. Klar, planbar und ohne Überraschungen.
+      </p>
+    </ScrollReveal>
+
+    <!-- Vertical timeline -->
+    <div class="relative">
+      <!-- Connecting line -->
+      <div class="absolute left-[23px] top-0 bottom-0 hidden w-px bg-gradient-to-b from-accent/40 via-accent/20 to-transparent md:block" aria-hidden="true"></div>
+
+      <div class="space-y-12 md:space-y-16">
+        {steps.map((step, i) => (
+          <ScrollReveal delay={i * 100}>
+            <div class="grid gap-6 md:grid-cols-[48px_1fr] md:gap-8">
+              <!-- Number badge -->
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-dark text-sm font-semibold text-emerald-400 ring-4 ring-surface">
+                {step.num}
+              </div>
+              <!-- Content -->
+              <div class="pt-1">
+                <h3 class="mb-2 font-heading text-xl text-text sm:text-2xl">{step.title}</h3>
+                <p class="max-w-lg text-text-secondary leading-relaxed">{step.desc}</p>
+              </div>
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </Container>
+</section>
