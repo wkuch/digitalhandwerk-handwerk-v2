@@ -15,7 +15,7 @@ export interface ContactFormData {
   email: string;
   company?: string;
   phone?: string;
-  message: string;
+  message?: string;
   privacyAccepted: boolean;
 }
 

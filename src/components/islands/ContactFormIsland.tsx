@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import * as z from "zod";
 import { toast, Toaster } from "sonner";
+import { AnimatePresence, motion } from "motion/react";
 import { submitContactForm } from "@/lib/contact-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,7 +21,7 @@ const formSchema = z.object({
   email: z.string().email("Bitte geben Sie eine gültige E-Mail-Adresse ein"),
   company: z.string().optional(),
   phone: z.string().optional(),
-  message: z.string().min(10, "Nachricht muss mindestens 10 Zeichen haben"),
+  message: z.string().optional(),
   privacyAccepted: z.boolean().refine((v) => v, {
     message: "Bitte stimmen Sie der Datenschutzerklärung zu.",
   }),
@@ -30,6 +31,7 @@ type ContactFormValues = z.infer<typeof formSchema>;
 
 export function ContactFormIsland() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(formSchema),
@@ -47,6 +49,7 @@ export function ContactFormIsland() {
         "message",
         `Hallo, ich interessiere mich für das ${pkg}-Paket (${price}). Bitte kontaktieren Sie mich für weitere Informationen.`
       );
+      setShowMessage(true);
     }
   }, []);
 
@@ -62,6 +65,7 @@ export function ContactFormIsland() {
           description: "Ich melde mich innerhalb von 24 Stunden bei Ihnen zurück.",
         });
         form.reset();
+        setShowMessage(false);
       } else {
         throw new Error(result.error || result.message);
       }
@@ -112,15 +116,38 @@ export function ContactFormIsland() {
             </FormItem>
           )} />
 
-          <FormField control={form.control} name="message" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nachricht *</FormLabel>
-              <FormControl>
-                <Textarea placeholder="Beschreiben Sie kurz Ihr Projekt und Ihre Vorstellungen..." rows={4} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )} />
+          <AnimatePresence>
+            {showMessage ? (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="overflow-hidden"
+              >
+                <FormField control={form.control} name="message" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nachricht (optional)</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Beschreiben Sie kurz Ihr Projekt und Ihre Vorstellungen..." rows={4} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </motion.div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setShowMessage(true)}
+                className="flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors"
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+                Nachricht hinzufügen
+              </button>
+            )}
+          </AnimatePresence>
 
           <FormField control={form.control} name="privacyAccepted" render={({ field }) => (
             <FormItem>
@@ -141,6 +168,8 @@ export function ContactFormIsland() {
               <FormMessage />
             </FormItem>
           )} />
+
+          <p className="text-sm text-text-secondary text-center">Ich melde mich innerhalb von 24 Stunden bei Ihnen.</p>
 
           <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-accent text-white hover:bg-accent-hover">
             {isSubmitting ? (
