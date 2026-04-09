@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = "Handwerker Website ab 499 € | Webdesign aus Karlsruhe",
-  description = "Professionelle Website für Ihren Handwerksbetrieb – aus Karlsruhe, deutschlandweit. DSGVO-konform, mobil-optimiert, inkl. Kontaktformular & SEO. Jetzt kostenloses Erstgespräch vereinbaren.",
+  title = "Handwerker Website – 499 € Festpreis | Karlsruhe & deutschlandweit",
+  description = "Website für Handwerksbetriebe aus Karlsruhe – 499 € Festpreis, alles inklusive. DSGVO-konform, SEO, Kontaktformular. Kein Abo, keine versteckten Kosten. Jetzt Erstgespräch vereinbaren.",
   canonical = Astro.url.href,
   ogImage = "/og-image.webp",
 } = Astro.props;
@@ -23,7 +23,7 @@ const {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Handwerker Website, Webseite Handwerk, Elektriker Website, Sanitär Website, Kfz Website, DSGVO, Karlsruhe, professionelle Webseite" />
+    <meta name="keywords" content="Handwerker Website, Webseite Handwerk, Elektriker Website, Sanitär Website, Kfz Website, DSGVO, Karlsruhe, Festpreis, 499 Euro, alles inklusive, kein Abo, Handwerker Webseite Karlsruhe" />
     <meta name="author" content="Wanja Mensch – DigitalHandwerk" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
@@ -75,7 +75,7 @@ const {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "DigitalHandwerk – Wanja Mensch",
-      "description": "Webdesign für Handwerksbetriebe: professionelle, DSGVO-konforme Websites ab 499 € Festpreis. Persönliche Beratung, schnelle Umsetzung, deutschlandweit.",
+      "description": "Website für Handwerksbetriebe aus Karlsruhe – 499 € Festpreis, alles inklusive: Design, SEO, DSGVO, Kontaktformular. Kein Abo, keine versteckten Kosten. Deutschlandweit.",
       "url": "https://www.digitalhandwerk-mensch.de",
       "telephone": "+4915733962986",
       "email": "kontakt@digitalhandwerk-mensch.de",
@@ -96,7 +96,7 @@ const {
         "@type": "Country",
         "name": "Deutschland"
       },
-      "priceRange": "ab 499€",
+      "priceRange": "ab 499 €",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
