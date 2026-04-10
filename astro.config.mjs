@@ -5,7 +5,7 @@ import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://www.digitalhandwerk-mensch.de',
+  site: 'https://www.digitalhandwerk.net',
   output: 'static',
   adapter: vercel(),
   integrations: [
@@ -22,7 +22,7 @@ export default defineConfig({
         ];
         const isTradePage = tradePages.some(slug => item.url.includes(slug));
 
-        if (item.url === 'https://www.digitalhandwerk-mensch.de/') {
+        if (item.url === 'https://www.digitalhandwerk.net/') {
           item.priority = 1.0;
           item.changefreq = 'monthly';
         } else if (isTradePage) {
