@@ -32,7 +32,7 @@ Beide Domains sind aktuell live und teilen die SEO-Autorität auf. Das muss sofo
 
 ---
 
-### 2. XML-Sitemap einreichen
+### 2. XML-Sitemap einreichen ✅
 **Priorität: 🔴 Kritisch**
 
 Aktuell ist nur die Homepage indexiert, weil Google keine Sitemap findet.
@@ -44,7 +44,7 @@ Aktuell ist nur die Homepage indexiert, weil Google keine Sitemap findet.
 
 ---
 
-### 3. Homepage-Titel und Meta-Description optimieren
+### 3. Homepage-Titel und Meta-Description optimieren ✅
 **Priorität: 🔴 Hoch**
 
 - **Title Tag (50–60 Zeichen):**
@@ -55,7 +55,7 @@ Aktuell ist nur die Homepage indexiert, weil Google keine Sitemap findet.
 
 ---
 
-### 4. H1-Tag und Seitenstruktur prüfen
+### 4. H1-Tag und Seitenstruktur prüfen ✅
 **Priorität: 🔴 Hoch**
 
 - Genau ein H1 pro Seite, das primäre Keyword enthält
@@ -66,7 +66,7 @@ Aktuell ist nur die Homepage indexiert, weil Google keine Sitemap findet.
 
 ## Phase 2 — Nächste 4–6 Wochen: Sichtbarkeit aufbauen
 
-### 5. Gewerk-spezifische Unterseiten erstellen
+### 5. Gewerk-spezifische Unterseiten erstellen ✅
 **Priorität: 🟠 Hoch**
 
 Jede Seite zielt auf eine eigene Keyword-Gruppe und kann unabhängig ranken.
