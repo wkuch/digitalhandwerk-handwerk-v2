@@ -1,0 +1,200 @@
+---
+import BaseLayout from "@/components/layout/BaseLayout.astro";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import Container from "@/components/layout/Container.astro";
+import ScrollReveal from "@/components/shared/ScrollReveal.astro";
+import PackagesSection from "@/components/sections/PackagesSection.astro";
+import ProcessSection from "@/components/sections/ProcessSection.astro";
+import ContactSection from "@/components/sections/ContactSection.astro";
+import { Image } from "astro:assets";
+import heroImg from "@/assets/hero-schreiner.webp";
+
+const title = "Website für Schreiner erstellen lassen – 499 € | DigitalHandwerk";
+const description = "Professionelle Website für Schreinereien ab 499 € – zeigen Sie Ihre Arbeit, gewinnen Sie mehr Aufträge. DSGVO-konform, mobiloptimiert, deutschlandweit.";
+const canonical = "https://www.digitalhandwerk.net/website-fuer-schreiner";
+---
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <Header />
+  <main id="main">
+
+    <!-- Trade Hero -->
+    <section class="relative overflow-hidden bg-dark">
+      <div class="absolute inset-0">
+        <Image
+          src={heroImg}
+          alt="Schreiner bei der Arbeit an einer Werkbank"
+          class="h-full w-full object-cover opacity-55"
+          widths={[800, 1200, 1600]}
+          sizes="100vw"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/70 to-dark/30"></div>
+      </div>
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-emerald-500/8 blur-[120px]"></div>
+      </div>
+      <Container class="relative">
+        <div class="flex min-h-screen items-center py-32">
+          <div class="max-w-2xl">
+            <ScrollReveal>
+              <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+                Website für Schreinereien & Tischlereien
+              </span>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <h1 class="mb-8 font-heading text-4xl leading-[1.08] text-white sm:text-5xl lg:text-[3.5rem]">
+                Website für Schreiner –<br />
+                Handwerk, das man sehen<br class="hidden sm:block" />
+                muss. Zeigen Sie es.
+              </h1>
+            </ScrollReveal>
+            <ScrollReveal delay={200}>
+              <p class="mb-12 max-w-xl text-lg leading-relaxed text-stone-300">
+                Maßmöbel, Küchen, Treppen, Innenausbau: Kunden suchen Schreiner, denen sie
+                ihre Wohnung anvertrauen können. Eine professionelle Website mit Referenzfotos
+                schafft genau das Vertrauen, das Sie brauchen – ab 499 €, in wenigen Wochen live.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={300}>
+              <div class="mb-14 flex flex-col items-start gap-4 sm:flex-row">
+                <a
+                  href="#contact"
+                  class="inline-flex items-center rounded-lg bg-accent px-8 py-4 text-base font-medium text-white transition-all hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Erstgespräch vereinbaren
+                  <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+                <a
+                  href="#pakete"
+                  class="inline-flex items-center rounded-lg border border-stone-600 px-8 py-4 text-base font-medium text-stone-300 transition-all hover:border-emerald-500/50 hover:text-emerald-400"
+                >
+                  Leistungen ansehen
+                </a>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={400}>
+              <div class="flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-stone-400">
+                <span class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  24h Rückmeldung
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  DSGVO-konform & SSL
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  Festpreis 499 €
+                </span>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Trade-specific benefits -->
+    <section class="bg-surface py-[clamp(64px,8vw,120px)]">
+      <Container>
+        <ScrollReveal>
+          <span class="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">Warum eine eigene Website?</span>
+          <h2 class="mb-16 max-w-lg font-heading text-3xl text-text sm:text-4xl">
+            Ihre Arbeit spricht für sich – wenn man sie sieht.
+          </h2>
+        </ScrollReveal>
+        <div class="space-y-12 md:space-y-16">
+          <ScrollReveal>
+            <div class="grid items-start gap-8 md:grid-cols-[1fr_1.4fr]">
+              <h3 class="font-heading text-2xl text-text sm:text-3xl">Referenzen, die überzeugen</h3>
+              <p class="text-lg leading-relaxed text-text-secondary">
+                Schreinerarbeit lässt sich schwer beschreiben – aber gut fotografieren.
+                Eine Galerie Ihrer abgeschlossenen Projekte zeigt potenziellen Kunden
+                sofort, was sie von Ihnen erwarten können, und hebt Sie von Mitbewerbern ab.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div class="grid items-start gap-8 md:grid-cols-[1.4fr_1fr]">
+              <p class="order-2 text-lg leading-relaxed text-text-secondary md:order-1">
+                Maßmöbel, Küchen, Treppen, Fenster, Türen, Innenausbau: Wer nach einem
+                Schreiner für ein bestimmtes Projekt sucht, findet Ihre Seite – weil
+                die richtigen Keywords auf der richtigen Seite stehen.
+              </p>
+              <h3 class="order-1 font-heading text-2xl text-text sm:text-3xl md:order-2 md:text-right">
+                Für jede Leistung gefunden werden
+              </h3>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div class="grid items-start gap-8 md:grid-cols-[1fr_1.4fr]">
+              <h3 class="font-heading text-2xl text-text sm:text-3xl">Anfragen statt Kaltakquise</h3>
+              <p class="text-lg leading-relaxed text-text-secondary">
+                Eine gut strukturierte Website mit klarem Kontaktformular bedeutet: Kunden
+                kommen auf Sie zu, nicht umgekehrt. Sie entscheiden, welche Aufträge zu
+                Ihnen passen – und müssen nicht jedem Auftrag hinterherlaufen.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </Container>
+    </section>
+
+    <PackagesSection />
+    <ProcessSection />
+    <ContactSection />
+  </main>
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Webdesign für Schreinereien",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "DigitalHandwerk – Wanja Mensch",
+      "url": "https://www.digitalhandwerk.net"
+    },
+    "areaServed": { "@type": "Country", "name": "Deutschland" },
+    "description": "Professionelle Websites für Schreinereien ab 499 € – mit Referenzgalerie, DSGVO-konform, SEO-optimiert.",
+    "offers": {
+      "@type": "Offer",
+      "price": "499",
+      "priceCurrency": "EUR",
+      "description": "499 € Festpreis – Website für Schreinereien, alles inklusive."
+    }
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was kostet eine Website für eine Schreinerei?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Eine professionelle Website für Ihre Schreinerei kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Enthalten sind Design, Referenzgalerie, SEO-Grundlagen, DSGVO-konforme Umsetzung und Kontaktformular. Kein Abo, keine versteckten Kosten."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich meine Projekte als Schreiner auf der Website zeigen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, absolut. Eine Projektreferenz- oder Galerie-Sektion ist eines der wirkungsvollsten Elemente für Schreiner-Websites. Kunden sehen sofort die Qualität Ihrer Arbeit – das schafft Vertrauen, bevor das erste Gespräch stattfindet. Sie liefern die Fotos, ich integriere sie professionell."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie finden mich Kunden, die einen Schreiner suchen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Durch lokale SEO-Optimierung rankt Ihre Website für Suchanfragen wie 'Schreiner Karlsruhe', 'Maßmöbel Schreinerei' oder 'Kücheneinbau Tischler'. Mit optimierten Meta-Tags, sauberem Code und strukturierten Daten sorgen wir dafür, dass Google Ihren Betrieb korrekt einordnet."
+        }
+      }
+    ]
+  })} />
+</BaseLayout>
