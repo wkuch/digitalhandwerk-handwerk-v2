@@ -73,15 +73,85 @@ import Container from "@/components/layout/Container.astro";
             <p>Diese Website verwendet selbst gehostete Schriftarten. Es erfolgt keine Verbindung zu externen Servern (z. B. Google Fonts) beim Laden der Schriften.</p>
           </section>
 
-          <section>
-            <h2 class="mb-4 font-heading text-xl text-text">5. Cookies, Tracking und Speicherdauer</h2>
-            <p class="mb-4">Es werden keine Analyse- oder Marketing-Tools eingesetzt. Es findet kein Nutzer-Tracking zu Werbezwecken statt.</p>
+          <section id="cookies">
+            <h2 class="mb-4 font-heading text-xl text-text">5. Cookies und Speicherdauer</h2>
+            <p class="mb-4">Diese Website verwendet Cookies ausschließlich nach Ihrer ausdrücklichen Einwilligung. Beim ersten Besuch wird ein Cookie-Hinweis angezeigt. Ohne Ihre Zustimmung werden keine Tracking- oder Marketing-Cookies gesetzt.</p>
+            <h3 class="mb-2 font-medium text-text">Cookie-Kategorien:</h3>
+            <div class="mb-4 overflow-x-auto">
+              <table class="w-full text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-border">
+                    <th class="py-2 pr-4 text-left font-medium text-text">Kategorie</th>
+                    <th class="py-2 pr-4 text-left font-medium text-text">Zweck</th>
+                    <th class="py-2 text-left font-medium text-text">Einwilligung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-border">
+                    <td class="py-2 pr-4">Technisch notwendig</td>
+                    <td class="py-2 pr-4">Betrieb der Website (z. B. Formulare)</td>
+                    <td class="py-2">Nicht erforderlich</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-4">Marketing / Werbung</td>
+                    <td class="py-2 pr-4">Google Ads Conversion-Tracking</td>
+                    <td class="py-2">Erforderlich (Opt-in)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mb-4">Ihre Einwilligung können Sie jederzeit widerrufen, indem Sie die Seite im Inkognito-Modus öffnen oder Ihre Browser-Cookies für diese Domain löschen. Ohne gespeicherte Einwilligung erscheint der Cookie-Hinweis erneut.</p>
             <p class="mb-4">Kontaktanfragen speichern wir nur so lange, wie es zur Bearbeitung und zur Erfüllung gesetzlicher Aufbewahrungspflichten erforderlich ist.</p>
             <p>Server-Logdaten werden nur so lange aufbewahrt, wie dies für den sicheren Betrieb technisch erforderlich ist.</p>
           </section>
 
           <section>
-            <h2 class="mb-4 font-heading text-xl text-text">6. Datenschutz-Maßnahmen</h2>
+            <h2 class="mb-4 font-heading text-xl text-text">6. Google Ads Conversion-Tracking</h2>
+            <p class="mb-4">
+              Mit Ihrer Einwilligung nutzen wir Google Ads Conversion-Tracking, um den Erfolg unserer Werbeanzeigen zu messen. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Muttergesellschaft: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+            </p>
+            <h3 class="mb-2 font-medium text-text">Verarbeitete Daten und Cookies:</h3>
+            <div class="mb-4 overflow-x-auto">
+              <table class="w-full text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-border">
+                    <th class="py-2 pr-4 text-left font-medium text-text">Cookie</th>
+                    <th class="py-2 pr-4 text-left font-medium text-text">Zweck</th>
+                    <th class="py-2 text-left font-medium text-text">Speicherdauer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-border">
+                    <td class="py-2 pr-4 font-mono text-xs">_gcl_aw</td>
+                    <td class="py-2 pr-4">Google Click Identifier (Klick-Tracking)</td>
+                    <td class="py-2">90 Tage</td>
+                  </tr>
+                  <tr class="border-b border-border">
+                    <td class="py-2 pr-4 font-mono text-xs">_gcl_dc</td>
+                    <td class="py-2 pr-4">Dynamisches Conversion-Tracking</td>
+                    <td class="py-2">90 Tage</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-4 font-mono text-xs">_gcl_au</td>
+                    <td class="py-2 pr-4">Zielgruppen- und Conversion-Daten</td>
+                    <td class="py-2">90 Tage</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mb-4"><strong class="text-text">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) i. V. m. § 25 Abs. 1 TTDSG. Die Einwilligung erfolgt über den Cookie-Hinweis beim ersten Seitenaufruf.</p>
+            <p class="mb-4">
+              <strong class="text-text">Drittlandübermittlung:</strong> Es kann zu einer Datenübertragung in die USA kommen. Google LLC ist unter dem EU-US Data Privacy Framework (DPF) zertifiziert, sodass ein angemessenes Datenschutzniveau sichergestellt ist (Angemessenheitsbeschluss der EU-Kommission gemäß Art. 45 DSGVO).
+            </p>
+            <p class="mb-4"><strong class="text-text">Widerspruch / Opt-out:</strong> Sie können der Verwendung von Cookies für personalisierte Werbung in den{" "}
+              <a href="https://adssettings.google.com" class="text-accent hover:text-accent-hover underline underline-offset-4" target="_blank" rel="noopener noreferrer">Google Ads-Einstellungen</a>{" "}
+              widersprechen oder Tracking durch Löschen der Cookies in Ihrem Browser deaktivieren.
+            </p>
+            <p>Weitere Informationen: <a href="https://policies.google.com/privacy?hl=de" class="text-accent hover:text-accent-hover underline underline-offset-4" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></p>
+          </section>
+
+          <section>
+            <h2 class="mb-4 font-heading text-xl text-text">7. Datenschutz-Maßnahmen</h2>
             <ul class="list-disc pl-6 space-y-1">
               <li><strong class="text-text">Transportverschlüsselung:</strong> Zugriff über HTTPS/TLS.</li>
               <li><strong class="text-text">Datenminimierung:</strong> Abfrage nur der für die Kontaktaufnahme erforderlichen Daten.</li>
@@ -91,7 +161,7 @@ import Container from "@/components/layout/Container.astro";
           </section>
 
           <section>
-            <h2 class="mb-4 font-heading text-xl text-text">7. Ihre Rechte</h2>
+            <h2 class="mb-4 font-heading text-xl text-text">8. Ihre Rechte</h2>
             <p class="mb-4">Sie haben das Recht:</p>
             <ul class="list-disc pl-6 space-y-2">
               <li>gemäß Art. 15 DSGVO Auskunft über Ihre verarbeiteten personenbezogenen Daten zu verlangen,</li>
@@ -105,13 +175,13 @@ import Container from "@/components/layout/Container.astro";
           </section>
 
           <section>
-            <h2 class="mb-4 font-heading text-xl text-text">8. Kontakt für Datenschutzanfragen</h2>
+            <h2 class="mb-4 font-heading text-xl text-text">9. Kontakt für Datenschutzanfragen</h2>
             <p class="mb-4">Für Fragen zum Datenschutz:</p>
             <p>Wanja Mensch<br />E-Mail: kontakt@digitalhandwerk.net</p>
           </section>
 
           <section>
-            <h2 class="mb-4 font-heading text-xl text-text">9. Änderungen dieser Datenschutzerklärung</h2>
+            <h2 class="mb-4 font-heading text-xl text-text">10. Änderungen dieser Datenschutzerklärung</h2>
             <p class="mb-4">Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen.</p>
             <p><strong class="text-text">Stand:</strong> April 2026</p>
           </section>
