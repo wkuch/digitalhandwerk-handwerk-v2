@@ -2,8 +2,6 @@
 import "@/styles/global.css";
 import { CookieConsentBanner } from "@/components/islands/CookieConsentBanner";
 
-const googleAdsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? "";
-
 interface Props {
   title?: string;
   description?: string;
@@ -61,7 +59,7 @@ const {
     <link rel="dns-prefetch" href="https://api.web3forms.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-    <!-- Google Consent Mode v2 — must fire before any Google tag -->
+    <!-- Google Consent Mode v2 — must fire before gtag.js loads -->
     <!-- Sets all consent types to denied by default (§25 TTDSG / DSGVO) -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -73,6 +71,12 @@ const {
         ad_personalization: "denied",
         wait_for_update: 2000,
       });
+    </script>
+    <!-- gtag.js loads on every page; consent mode above controls what data is sent -->
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GOOGLE_ADS_ID}`}></script>
+    <script is:inline define:vars={{ googleAdsId: import.meta.env.PUBLIC_GOOGLE_ADS_ID }}>
+      window.gtag("js", new Date());
+      window.gtag("config", googleAdsId);
     </script>
 
     <!-- Favicons -->
@@ -136,7 +140,7 @@ const {
       Zum Inhalt springen
     </a>
     <slot />
-    <CookieConsentBanner client:load googleAdsId={googleAdsId} />
+    <CookieConsentBanner client:load />
     <script>
       function initScrollReveal() {
         const elements = document.querySelectorAll("[data-reveal]");

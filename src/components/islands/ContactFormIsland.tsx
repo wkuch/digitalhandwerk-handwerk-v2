@@ -61,16 +61,10 @@ export function ContactFormIsland() {
         phone: data.phone, message: data.message, privacyAccepted: data.privacyAccepted,
       });
       if (result.success) {
-        // Fire Google Ads conversion event if consent was granted
-        if (typeof window !== "undefined" && window.gtag) {
-          const conversionId = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
-          const conversionLabel = import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_LABEL;
-          if (conversionId && conversionLabel && !conversionId.includes("XXXXXXX")) {
-            window.gtag("event", "conversion", {
-              send_to: `${conversionId}/${conversionLabel}`,
-            });
-          }
-        }
+        // Fire Google Ads conversion event (only sends if consent was granted)
+        window.gtag?.("event", "conversion", {
+          send_to: `${import.meta.env.PUBLIC_GOOGLE_ADS_ID}/${import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_LABEL}`,
+        });
         toast.success("Anfrage erfolgreich gesendet!", {
           description: "Ich melde mich innerhalb von 24 Stunden bei Ihnen zurück.",
         });

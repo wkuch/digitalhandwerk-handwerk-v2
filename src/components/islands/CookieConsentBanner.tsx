@@ -9,67 +9,33 @@ declare global {
   }
 }
 
-function initGtag(googleAdsId: string) {
-  if (typeof window === "undefined") return;
-
-  // Initialize dataLayer and gtag function if not already present
-  window.dataLayer = window.dataLayer || [];
-  if (!window.gtag) {
-    window.gtag = function (...args: unknown[]) {
-      window.dataLayer.push(args);
-    };
-  }
-
-  // Only inject the script tag once
-  if (document.getElementById("gtag-script")) return;
-
-  const script = document.createElement("script");
-  script.id = "gtag-script";
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`;
-  document.head.appendChild(script);
-
-  window.gtag("js", new Date());
-  window.gtag("config", googleAdsId);
-}
-
-interface Props {
-  googleAdsId: string;
-}
-
-export function CookieConsentBanner({ googleAdsId }: Props) {
+export function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem(CONSENT_KEY);
     if (!stored) {
       setVisible(true);
-    } else if (stored === "granted" && googleAdsId && !googleAdsId.includes("XXXXXXX")) {
-      // Consent was previously granted — restore tracking on page load
+    } else if (stored === "granted") {
+      // Consent was previously granted — restore on page load
       window.gtag?.("consent", "update", {
         analytics_storage: "granted",
         ad_storage: "granted",
         ad_user_data: "granted",
         ad_personalization: "granted",
       });
-      initGtag(googleAdsId);
     }
-  }, [googleAdsId]);
+  }, []);
 
   function handleAccept() {
     localStorage.setItem(CONSENT_KEY, "granted");
     setVisible(false);
-
     window.gtag?.("consent", "update", {
       analytics_storage: "granted",
       ad_storage: "granted",
       ad_user_data: "granted",
       ad_personalization: "granted",
     });
-
-    if (googleAdsId && !googleAdsId.includes("XXXXXXX")) {
-      initGtag(googleAdsId);
-    }
   }
 
   function handleDeny() {
