@@ -7,6 +7,7 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  robots?: string;
 }
 
 const {
@@ -14,6 +15,7 @@ const {
   description = "Professionelle Websites für Handwerker – schnell, persönlich & DSGVO-konform. Elektriker, Sanitär, Schreiner und mehr. Jetzt Angebot anfragen.",
   canonical = Astro.url.href,
   ogImage = "/og-image.webp",
+  robots = "index, follow",
 } = Astro.props;
 ---
 <!doctype html>
@@ -26,7 +28,7 @@ const {
     <meta name="description" content={description} />
     <meta name="keywords" content="Handwerker Website, Webseite Handwerk, Elektriker Website, Sanitär Website, Kfz Website, DSGVO, Karlsruhe, Festpreis, 499 Euro, alles inklusive, kein Abo, Handwerker Webseite Karlsruhe" />
     <meta name="author" content="Wanja Mensch – DigitalHandwerk" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
 
     <!-- Geo -->
@@ -135,6 +137,19 @@ const {
 
     <slot name="head" />
   </head>
+  <script is:inline define:vars={{ googleAdsId: import.meta.env.PUBLIC_GOOGLE_ADS_ID, conversionLabel: import.meta.env.PUBLIC_GOOGLE_ADS_CONVERSION_LABEL }}>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a.phone-track').forEach(function(el) {
+        el.addEventListener('click', function() {
+          if (window.gtag && googleAdsId && conversionLabel) {
+            window.gtag('event', 'conversion', {
+              send_to: googleAdsId + '/' + conversionLabel,
+            });
+          }
+        });
+      });
+    });
+  </script>
   <body class="min-h-screen antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-white">
       Zum Inhalt springen

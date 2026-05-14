@@ -9,23 +9,32 @@ import ProcessSection from "@/components/sections/ProcessSection.astro";
 import ContactSection from "@/components/sections/ContactSection.astro";
 import FaqSection from "@/components/sections/FaqSection.astro";
 import { Image } from "astro:assets";
-import heroImg from "@/assets/hero-sanitaer.webp";
+import heroImg from "@/assets/hero-karlsruhe.jpg";
 
-const title = "Website für Sanitärbetrieb – 499 € Festpreis | DigitalHandwerk";
-const description = "Professionelle Website für Sanitärbetriebe ab 499 € – DSGVO-konform, mobiloptimiert, auf lokale Kundenanfragen ausgerichtet. Deutschlandweit, Schwerpunkt Karlsruhe.";
-const canonical = "https://www.digitalhandwerk.net/website-fuer-sanitaer/";
+const title = "Webdesign für Handwerker Karlsruhe – 499 € Festpreis | DigitalHandwerk";
+const description = "Professionelle Websites für Handwerksbetriebe in Karlsruhe und Umgebung. Ab 499 € Festpreis, DSGVO-konform, persönliche Beratung. Jetzt Angebot anfragen.";
+const canonical = "https://www.digitalhandwerk.net/webdesign-karlsruhe-handwerker/";
+
+const trades = [
+  { label: "Elektriker", href: "/website-fuer-elektriker/" },
+  { label: "Sanitär", href: "/website-fuer-sanitaer/" },
+  { label: "Schreiner", href: "/website-fuer-schreiner/" },
+  { label: "Maler", href: "/website-fuer-maler/" },
+  { label: "KFZ-Betrieb", href: "/website-fuer-kfz-betrieb/" },
+  { label: "Dachdecker", href: "/website-fuer-dachdecker/" },
+];
 ---
 <BaseLayout title={title} description={description} canonical={canonical}>
   <Header />
   <main id="main">
 
-    <!-- Trade Hero -->
+    <!-- Hero -->
     <section class="relative overflow-hidden bg-dark">
       <div class="absolute inset-0">
         <Image
           src={heroImg}
-          alt="Sanitärinstallateur bei der Arbeit unter einer Spüle"
-          class="h-full w-full object-cover opacity-55"
+          alt="Karlsruhe Skylight – Schloss und Stadtzentrum"
+          class="h-full w-full object-cover opacity-50"
           widths={[800, 1200, 1600]}
           sizes="100vw"
           loading="eager"
@@ -40,21 +49,21 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-sanitaer/";
           <div class="max-w-2xl">
             <ScrollReveal>
               <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-                Website für Sanitärbetriebe
+                Webdesign aus Karlsruhe
               </span>
             </ScrollReveal>
             <ScrollReveal delay={100}>
               <h1 class="mb-8 font-heading text-4xl leading-[1.08] text-white sm:text-5xl lg:text-[3.5rem]">
-                Website für Sanitärbetriebe –<br />
-                mehr Anfragen, weniger<br class="hidden sm:block" />
-                leere Auftragsbücher.
+                Webdesign für Handwerker<br />
+                in Karlsruhe – direkt aus<br class="hidden sm:block" />
+                Ihrer Region, ab 499 €.
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <p class="mb-12 max-w-xl text-lg leading-relaxed text-stone-300">
-                Wasserrohrbruch, Bad-Renovierung, Heizungsanlage: Kunden suchen online einen
-                verlässlichen Sanitärbetrieb in ihrer Nähe. Ich baue Ihnen eine Website, die
-                genau diese Anfragen bringt – ab 499 €, DSGVO-konform, in wenigen Wochen live.
+                Sie führen einen Handwerksbetrieb in Karlsruhe, Ettlingen, Bruchsal oder Pforzheim?
+                Ich baue Ihnen eine professionelle Website, die neue Kunden bringt – persönlich, schnell
+                und DSGVO-konform. Ein Festpreis, alles drin.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={300}>
@@ -80,7 +89,7 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-sanitaer/";
               <div class="flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-stone-400">
                 <span class="flex items-center gap-2">
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-                  24h Rückmeldung
+                  Persönliche Betreuung
                 </span>
                 <span class="flex items-center gap-2">
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
@@ -97,46 +106,58 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-sanitaer/";
       </Container>
     </section>
 
-    <!-- Trade-specific benefits -->
+    <!-- Local benefits -->
     <section class="bg-surface py-[clamp(64px,8vw,120px)]">
       <Container>
         <ScrollReveal>
-          <span class="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">Warum eine eigene Website?</span>
+          <span class="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">Lokaler Vorteil</span>
           <h2 class="mb-16 max-w-lg font-heading text-3xl text-text sm:text-4xl">
-            Was Ihre Kunden suchen – und wie Sie gefunden werden.
+            Ihr Webdesigner aus Karlsruhe – vor Ort, wenn Sie ihn brauchen.
           </h2>
         </ScrollReveal>
         <div class="space-y-12 md:space-y-16">
           <ScrollReveal>
             <div class="grid items-start gap-8 md:grid-cols-[1fr_1.4fr]">
-              <h3 class="font-heading text-2xl text-text sm:text-3xl">Notfälle und Schnellanfragen</h3>
+              <h3 class="font-heading text-2xl text-text sm:text-3xl">In Karlsruhe zuhause</h3>
               <p class="text-lg leading-relaxed text-text-secondary">
-                „Klempner Notfall Karlsruhe" oder „Rohrbruch Sanitär sofort" – solche
-                Suchanfragen landen auf Ihrer Seite. Mit einer klaren Telefonnummer und
-                mobiloptimierten Design reagieren Kunden sofort, auch vom Smartphone.
+                Ich kenne die Region und ihre Betriebe. Ob aus der Karlsruher Südstadt, Durlach,
+                Mühlburg oder den Vororten – ein persönliches Treffen vor Ort ist jederzeit möglich.
+                Kein Callcenter, kein anonymer Anbieter aus dem Ausland. Ihr direkter Ansprechpartner.
               </p>
             </div>
           </ScrollReveal>
           <ScrollReveal>
             <div class="grid items-start gap-8 md:grid-cols-[1.4fr_1fr]">
               <p class="order-2 text-lg leading-relaxed text-text-secondary md:order-1">
-                Heizung, Bad-Renovierung, Rohrsanierung – Kunden wollen wissen, was Sie
-                können, bevor sie anrufen. Eine strukturierte Leistungsseite erhöht die
-                Qualität der Anfragen und spart Ihnen Zeit.
+                In Ettlingen, Bruchsal, Pforzheim oder Bretten gibt es Hunderte Handwerksbetriebe
+                ohne moderne Website. Ich helfe Ihnen, sich lokal sichtbar zu machen – mit einer
+                Seite, die genau auf Ihre Region und Ihr Gewerk zugeschnitten ist.
               </p>
               <h3 class="order-1 font-heading text-2xl text-text sm:text-3xl md:order-2 md:text-right">
-                Leistungsangebot klar darstellen
+                Von Karlsruhe ins Umland
               </h3>
             </div>
           </ScrollReveal>
           <ScrollReveal>
             <div class="grid items-start gap-8 md:grid-cols-[1fr_1.4fr]">
-              <h3 class="font-heading text-2xl text-text sm:text-3xl">Vertrauen durch Seriosität</h3>
+              <h3 class="font-heading text-2xl text-text sm:text-3xl">Wettbewerber im Blick</h3>
               <p class="text-lg leading-relaxed text-text-secondary">
-                Eine professionelle Website mit Foto, echten Referenzen und klarer Kontaktmöglichkeit
-                unterscheidet Sie von anonymen Einträgendaten im Branchenverzeichnis. Kunden buchen
-                bei Betrieben, denen sie vertrauen.
+                Agenturen in Karlsruhe nehmen oft Tagesätze von über 1.000 €. Als Solo-Entwickler
+                biete ich die gleiche Qualität zum Festpreis von 499 € – weil ich ohne Agentur-Ballast
+                arbeite und die Ersparnis direkt an Sie weitergebe.
               </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div class="grid items-start gap-8 md:grid-cols-[1.4fr_1fr]">
+              <p class="order-2 text-lg leading-relaxed text-text-secondary md:order-1">
+                Ihre Kunden suchen online nach Handwerkern in Karlsruhe und der Region. Mit lokalem
+                SEO (Google Maps, Branchenbucheinträge, regionale Keywords) mache ich Sie genau dort
+                sichtbar, wo neue Aufträge entstehen.
+              </p>
+              <h3 class="order-1 font-heading text-2xl text-text sm:text-3xl md:order-2 md:text-right">
+                Sichtbar in Ihrer Stadt
+              </h3>
             </div>
           </ScrollReveal>
         </div>
@@ -146,55 +167,85 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-sanitaer/";
     <PackagesSection />
     <ProcessSection />
     <FaqSection />
+
+    <!-- Cross-links to trade pages -->
+    <section class="bg-surface-muted py-[clamp(64px,8vw,100px)]">
+      <Container>
+        <h2 class="mb-12 text-center font-heading text-3xl text-text sm:text-4xl">
+          Auch für diese Gewerke
+        </h2>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+          {trades.map((trade) => (
+            <a
+              href={trade.href}
+              class="flex items-center justify-center rounded-xl border border-border bg-surface p-4 text-sm font-medium text-text-secondary transition-all hover:border-accent/30 hover:text-accent hover:shadow-sm"
+            >
+              {trade.label}
+            </a>
+          ))}
+        </div>
+      </Container>
+    </section>
+
     <ContactSection />
   </main>
   <Footer />
 
+  <!-- Structured Data: Service -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Webdesign für Sanitärbetriebe",
+    "serviceType": "Webdesign für Handwerksbetriebe in Karlsruhe",
     "provider": {
       "@type": "ProfessionalService",
       "name": "DigitalHandwerk – Wanja Mensch",
       "url": "https://www.digitalhandwerk.net"
     },
-    "areaServed": { "@type": "Country", "name": "Deutschland" },
-    "description": "Professionelle Websites für Sanitärbetriebe ab 499 € – DSGVO-konform, mobiloptimiert, SEO-optimiert.",
+    "areaServed": {
+      "@type": "City",
+      "name": "Karlsruhe",
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Baden-Württemberg"
+      }
+    },
+    "description": "Professionelle Websites für Handwerksbetriebe in Karlsruhe und Umgebung – 499 € Festpreis, alles inklusive: Design, SEO, DSGVO, Kontaktformular. Persönliche Beratung vor Ort.",
     "offers": {
       "@type": "Offer",
       "price": "499",
       "priceCurrency": "EUR",
-      "description": "499 € Festpreis – Website für Sanitärbetriebe, alles inklusive."
+      "description": "499 € Festpreis – Website für Handwerksbetriebe, alles inklusive."
     }
   })} />
 
+  <!-- FAQ Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "name": "Häufige Fragen zu Handwerker-Websites in Karlsruhe",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Was kostet eine Website für einen Sanitärbetrieb?",
+        "name": "Was kostet eine Website für Handwerker in Karlsruhe?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Eine professionelle Website für Ihren Sanitärbetrieb kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Enthalten: Design, SEO-Grundlagen, DSGVO-konforme Umsetzung mit Impressum und Datenschutzerklärung, mobil-optimiertes Layout und Kontaktformular. Kein Abo, keine versteckten Kosten."
+          "text": "Eine professionelle Website für Ihren Handwerksbetrieb in Karlsruhe kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Darin enthalten: Design, SEO-Grundlagen, DSGVO-konforme Umsetzung mit Impressum und Datenschutzerklärung, mobil-optimiertes Layout und Kontaktformular. Kein Abo, keine versteckten Kosten."
         }
       },
       {
         "@type": "Question",
-        "name": "Wie kann ich als Sanitärbetrieb bei Google gefunden werden?",
+        "name": "Kann ich mich persönlich in Karlsruhe beraten lassen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Mit einer lokalen SEO-Optimierung Ihrer Website ranken Sie für Suchanfragen wie 'Sanitär Karlsruhe' oder 'Klempner Notfall'. Die Website enthält strukturierte Daten, schnelle Ladezeiten und optimierte Meta-Tags, damit Google Ihren Betrieb korrekt einordnet und lokal anzeigt."
+          "text": "Ja. Ich bin in Karlsruhe ansässig und stehe für persönliche Treffen vor Ort zur Verfügung – sei es in der Südstadt, Durlach oder wo immer Sie Ihren Betrieb haben. Auch im Umland (Ettlingen, Bruchsal, Pforzheim) sind Termine möglich."
         }
       },
       {
         "@type": "Question",
-        "name": "Wie lange dauert es, bis meine Sanitär-Website online ist?",
+        "name": "Wie lange dauert es, bis meine Webseite online ist?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "In der Regel ist die Website innerhalb von 2–4 Wochen fertig und live. Nach einem kurzen Erstgespräch erhalten Sie einen konkreten Zeitplan mit klaren Meilensteinen."
+          "text": "In der Regel ist die Website innerhalb von 2–4 Wochen fertig und live. Nach einem kurzen Erstgespräch erhalten Sie einen konkreten Zeitplan. Sie entscheiden, wie viel Sie selbst beitragen möchten."
         }
       }
     ]

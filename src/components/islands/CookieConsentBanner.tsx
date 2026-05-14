@@ -59,7 +59,7 @@ export function CookieConsentBanner() {
             <p className="text-sm text-text-secondary leading-relaxed">
               Diese Website verwendet Cookies zur Analyse unserer Online-Marketingmaßnahmen.{" "}
               <a
-                href="/datenschutz"
+                href="/datenschutz/"
                 className="underline underline-offset-2 text-accent hover:text-accent-hover"
               >
                 Datenschutzerklärung

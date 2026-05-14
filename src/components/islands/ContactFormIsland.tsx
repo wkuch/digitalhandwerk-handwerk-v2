@@ -155,17 +155,16 @@ export function ContactFormIsland() {
 
           <FormField control={form.control} name="privacyAccepted" render={({ field }) => (
             <FormItem>
-              <div className="flex items-start space-x-3 rounded-lg border border-border p-4">
+              <div className="flex items-start gap-2.5">
                 <FormControl>
                   <Checkbox checked={field.value} onCheckedChange={(checked) => field.onChange(checked === true)} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel className="text-sm font-normal leading-relaxed">
-                    Ich habe die{" "}
-                    <a href="/datenschutz" className="font-medium text-accent underline underline-offset-4 hover:text-accent-hover">
+                  <FormLabel className="text-xs font-normal leading-relaxed text-text-secondary">
+                    Ich stimme der Verarbeitung meiner Daten zur Bearbeitung der Anfrage zu.{" "}
+                    <a href="/datenschutz/" className="text-accent underline underline-offset-2 hover:text-accent-hover">
                       Datenschutzerklärung
-                    </a>{" "}
-                    gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung der Anfrage zu. *
+                    </a>
                   </FormLabel>
                 </div>
               </div>

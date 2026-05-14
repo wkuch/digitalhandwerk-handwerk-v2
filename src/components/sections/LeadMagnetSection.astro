@@ -1,0 +1,48 @@
+---
+import Container from "@/components/layout/Container.astro";
+import ScrollReveal from "@/components/shared/ScrollReveal.astro";
+import { LeadMagnetIsland } from "@/components/islands/LeadMagnetIsland";
+---
+<section class="bg-accent-surface/40 py-[clamp(64px,8vw,120px)]">
+  <Container>
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <ScrollReveal>
+        <div>
+          <span class="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
+            Kostenloser Download
+          </span>
+          <h2 class="mb-4 font-heading text-3xl text-text sm:text-4xl">
+            Die 5-Punkte-Checkliste für Ihre Handwerker-Website
+          </h2>
+          <p class="mb-6 max-w-md text-lg text-text-secondary leading-relaxed">
+            Erfahren Sie in 2 Minuten, was Ihre Website wirklich braucht, und wo die meisten Handwerksbetriebe verschenken.
+          </p>
+          <ul class="space-y-3 text-text-secondary">
+            <li class="flex items-start gap-3">
+              <svg class="mt-1 h-5 w-5 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Die wichtigsten Pflichtelemente für Kundengewinnung</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-1 h-5 w-5 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Typische Fehler, die Anfragen kosten</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="mt-1 h-5 w-5 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Praktische Tipps, die Sie sofort umsetzen können</span>
+            </li>
+          </ul>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={100}>
+        <LeadMagnetIsland client:visible />
+      </ScrollReveal>
+    </div>
+  </Container>
+</section>

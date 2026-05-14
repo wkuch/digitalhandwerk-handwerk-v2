@@ -9,9 +9,14 @@ import ProcessSection from "@/components/sections/ProcessSection.astro";
 import ReferencesSection from "@/components/sections/ReferencesSection.astro";
 import AboutSection from "@/components/sections/AboutSection.astro";
 import FaqSection from "@/components/sections/FaqSection.astro";
+import LeadMagnetSection from "@/components/sections/LeadMagnetSection.astro";
 import ContactSection from "@/components/sections/ContactSection.astro";
 ---
-<BaseLayout>
+<BaseLayout
+  title="Websites für Handwerksbetriebe ab 499 € | DigitalHandwerk"
+  description="Professionelle Websites für Handwerker – schnell, persönlich & DSGVO-konform. Elektriker, Sanitär, Schreiner und mehr. Jetzt Angebot anfragen."
+  canonical="https://www.digitalhandwerk.net/"
+>
   <Header />
   <main id="main">
     <Hero />
@@ -21,6 +26,7 @@ import ContactSection from "@/components/sections/ContactSection.astro";
     <ReferencesSection />
     <AboutSection />
     <FaqSection />
+    <LeadMagnetSection />
     <ContactSection />
   </main>
   <Footer />
