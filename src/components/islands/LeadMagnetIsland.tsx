@@ -126,7 +126,7 @@ export function LeadMagnetIsland() {
               <Phone className="h-3 w-3" /> 0157 3396 2986
             </span>
             <span className="flex items-center gap-1">
-              <Mail className="h-3 w-3" /> kontakt@digitalhandwerk.net
+              <Mail className="h-3 w-3" /> projekt@digitalhandwerk.net
             </span>
           </div>
         </div>
