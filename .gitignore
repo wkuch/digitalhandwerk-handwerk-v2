@@ -6,3 +6,7 @@ dist/
 
 # macOS
 .DS_Store
+
+# local data & scripts
+google_ads_data/
+take-screenshots.py
