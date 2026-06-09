@@ -3,3 +3,6 @@ dist/
 .astro/
 .vercel/
 .env
+
+# macOS
+.DS_Store
