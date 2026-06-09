@@ -7,13 +7,19 @@ import ScrollReveal from "@/components/shared/ScrollReveal.astro";
 import PackagesSection from "@/components/sections/PackagesSection.astro";
 import ProcessSection from "@/components/sections/ProcessSection.astro";
 import ContactSection from "@/components/sections/ContactSection.astro";
-import FaqSection from "@/components/sections/FaqSection.astro";
+import Breadcrumbs from "@/components/shared/Breadcrumbs.astro";
+import TradeServices from "@/components/sections/TradeServices.astro";
+import TradeFaq from "@/components/sections/TradeFaq.astro";
+import TradesGrid from "@/components/sections/TradesGrid.astro";
+import TradeSchema from "@/components/sections/TradeSchema.astro";
+import { tradeBySlug } from "@/lib/trades";
 import { Image } from "astro:assets";
 import heroImg from "@/assets/hero-kfz.webp";
 
 const title = "Website KFZ-Werkstatt – 499 € Festpreis | DigitalHandwerk";
 const description = "Professionelle Website für KFZ-Werkstätten ab 499 € – Terminbuchung, Leistungen, Vertrauen aufbauen. DSGVO-konform, mobiloptimiert, deutschlandweit.";
 const canonical = "https://www.digitalhandwerk.net/website-fuer-kfz-betrieb/";
+const trade = tradeBySlug["kfz-betrieb"];
 ---
 <BaseLayout title={title} description={description} canonical={canonical}>
   <Header />
@@ -97,6 +103,14 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-kfz-betrieb/";
       </Container>
     </section>
 
+    <Breadcrumbs
+      items={[
+        { name: "Start", href: "/" },
+        { name: "Webdesign Karlsruhe", href: "/webdesign-karlsruhe-handwerker/" },
+        { name: trade.navLong, href: trade.href },
+      ]}
+    />
+
     <!-- Trade-specific benefits -->
     <section class="bg-surface py-[clamp(64px,8vw,120px)]">
       <Container>
@@ -143,60 +157,23 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-kfz-betrieb/";
       </Container>
     </section>
 
+    <TradeServices
+      heading={trade.servicesHeading}
+      intro={trade.servicesIntro}
+      services={trade.services}
+    />
     <PackagesSection />
     <ProcessSection />
-    <FaqSection />
+    <TradeFaq heading={trade.faqHeading} faqs={trade.faqs} />
+    <TradesGrid
+      excludeSlug={trade.slug}
+      includeHub
+      variant="chips"
+      heading="Auch für andere Gewerke"
+    />
     <ContactSection />
   </main>
   <Footer />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Webdesign für KFZ-Werkstätten",
-    "provider": {
-      "@type": "ProfessionalService",
-      "name": "DigitalHandwerk – Wanja Mensch",
-      "url": "https://www.digitalhandwerk.net"
-    },
-    "areaServed": { "@type": "Country", "name": "Deutschland" },
-    "description": "Professionelle Websites für KFZ-Werkstätten ab 499 € – DSGVO-konform, mobiloptimiert, SEO-optimiert.",
-    "offers": {
-      "@type": "Offer",
-      "price": "499",
-      "priceCurrency": "EUR",
-      "description": "499 € Festpreis – Website für KFZ-Werkstätten, alles inklusive."
-    }
-  })} />
-
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Was kostet eine Website für eine KFZ-Werkstatt?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Eine professionelle Website für Ihre KFZ-Werkstatt kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Enthalten sind Design, Leistungsübersicht, Kontaktformular, SEO-Grundlagen und DSGVO-konforme Umsetzung. Kein Abo, keine versteckten Kosten."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Kann ich Terminanfragen über meine Werkstatt-Website entgegennehmen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja. Das Kontaktformular auf Ihrer Website ermöglicht Kunden, rund um die Uhr Terminanfragen zu senden. Sie erhalten die Anfrage per E-Mail und können direkt zurückrufen – kein Anrufbeantworter, kein verpasster Auftrag."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wie werde ich als KFZ-Werkstatt bei Google gefunden?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Durch lokale SEO-Optimierung Ihrer Website ranken Sie für Suchanfragen wie 'KFZ Werkstatt Karlsruhe' oder 'Inspektion Autowerkstatt'. Mit strukturierten Daten, schnellen Ladezeiten und optimierten Meta-Tags sorgen wir dafür, dass Google Ihre Werkstatt korrekt einordnet."
-        }
-      }
-    ]
-  })} />
+  <TradeSchema trade={trade} />
 </BaseLayout>

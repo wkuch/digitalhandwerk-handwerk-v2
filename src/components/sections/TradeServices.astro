@@ -1,0 +1,37 @@
+---
+import Container from "@/components/layout/Container.astro";
+import SectionLabel from "@/components/shared/SectionLabel.astro";
+import ScrollReveal from "@/components/shared/ScrollReveal.astro";
+
+interface Props {
+  heading: string;
+  intro: string;
+  services: string[];
+  label?: string;
+}
+
+const { heading, intro, services, label = "Leistungen" } = Astro.props;
+---
+<section class="bg-bg py-[clamp(64px,8vw,120px)]">
+  <Container>
+    <ScrollReveal>
+      <div class="mb-12 max-w-2xl">
+        <SectionLabel text={label} />
+        <h2 class="mb-4 font-heading text-3xl text-text sm:text-4xl">{heading}</h2>
+        <p class="text-lg leading-relaxed text-text-secondary">{intro}</p>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal delay={100}>
+      <ul class="grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((service) => (
+          <li class="flex items-start gap-3 rounded-lg border border-border bg-surface px-4 py-3 text-text-secondary">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="font-medium text-text">{service}</span>
+          </li>
+        ))}
+      </ul>
+    </ScrollReveal>
+  </Container>
+</section>

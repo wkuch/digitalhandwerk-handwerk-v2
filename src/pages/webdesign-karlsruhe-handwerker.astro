@@ -7,7 +7,8 @@ import ScrollReveal from "@/components/shared/ScrollReveal.astro";
 import PackagesSection from "@/components/sections/PackagesSection.astro";
 import ProcessSection from "@/components/sections/ProcessSection.astro";
 import ContactSection from "@/components/sections/ContactSection.astro";
-import FaqSection from "@/components/sections/FaqSection.astro";
+import Breadcrumbs from "@/components/shared/Breadcrumbs.astro";
+import TradeFaq from "@/components/sections/TradeFaq.astro";
 import { Image } from "astro:assets";
 import heroImg from "@/assets/hero-karlsruhe.jpg";
 
@@ -22,6 +23,24 @@ const trades = [
   { label: "Maler", href: "/website-fuer-maler/" },
   { label: "KFZ-Betrieb", href: "/website-fuer-kfz-betrieb/" },
   { label: "Dachdecker", href: "/website-fuer-dachdecker/" },
+];
+
+const localFaqs = [
+  {
+    question: "Was kostet eine Website für Handwerker in Karlsruhe?",
+    answer:
+      "Eine professionelle Website für Ihren Handwerksbetrieb in Karlsruhe kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Darin enthalten: Design, SEO-Grundlagen, DSGVO-konforme Umsetzung mit Impressum und Datenschutzerklärung, mobil-optimiertes Layout und Kontaktformular. Kein Abo, keine versteckten Kosten.",
+  },
+  {
+    question: "Kann ich mich persönlich in Karlsruhe beraten lassen?",
+    answer:
+      "Ja. Ich bin in Karlsruhe ansässig und stehe für persönliche Treffen vor Ort zur Verfügung – sei es in der Südstadt, Durlach oder wo immer Sie Ihren Betrieb haben. Auch im Umland (Ettlingen, Bruchsal, Pforzheim) sind Termine möglich.",
+  },
+  {
+    question: "Wie lange dauert es, bis meine Webseite online ist?",
+    answer:
+      "In der Regel ist die Website innerhalb von 2–4 Wochen fertig und live. Nach einem kurzen Erstgespräch erhalten Sie einen konkreten Zeitplan. Sie entscheiden, wie viel Sie selbst beitragen möchten.",
+  },
 ];
 ---
 <BaseLayout title={title} description={description} canonical={canonical}>
@@ -106,6 +125,13 @@ const trades = [
       </Container>
     </section>
 
+    <Breadcrumbs
+      items={[
+        { name: "Start", href: "/" },
+        { name: "Webdesign Karlsruhe", href: "/webdesign-karlsruhe-handwerker/" },
+      ]}
+    />
+
     <!-- Local benefits -->
     <section class="bg-surface py-[clamp(64px,8vw,120px)]">
       <Container>
@@ -166,7 +192,7 @@ const trades = [
 
     <PackagesSection />
     <ProcessSection />
-    <FaqSection />
+    <TradeFaq heading="Häufige Fragen zu Handwerker-Websites in Karlsruhe" faqs={localFaqs} />
 
     <!-- Cross-links to trade pages -->
     <section class="bg-surface-muted py-[clamp(64px,8vw,100px)]">
@@ -216,38 +242,5 @@ const trades = [
       "priceCurrency": "EUR",
       "description": "499 € Festpreis – Website für Handwerksbetriebe, alles inklusive."
     }
-  })} />
-
-  <!-- FAQ Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "name": "Häufige Fragen zu Handwerker-Websites in Karlsruhe",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Was kostet eine Website für Handwerker in Karlsruhe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Eine professionelle Website für Ihren Handwerksbetrieb in Karlsruhe kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Darin enthalten: Design, SEO-Grundlagen, DSGVO-konforme Umsetzung mit Impressum und Datenschutzerklärung, mobil-optimiertes Layout und Kontaktformular. Kein Abo, keine versteckten Kosten."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Kann ich mich persönlich in Karlsruhe beraten lassen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja. Ich bin in Karlsruhe ansässig und stehe für persönliche Treffen vor Ort zur Verfügung – sei es in der Südstadt, Durlach oder wo immer Sie Ihren Betrieb haben. Auch im Umland (Ettlingen, Bruchsal, Pforzheim) sind Termine möglich."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wie lange dauert es, bis meine Webseite online ist?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In der Regel ist die Website innerhalb von 2–4 Wochen fertig und live. Nach einem kurzen Erstgespräch erhalten Sie einen konkreten Zeitplan. Sie entscheiden, wie viel Sie selbst beitragen möchten."
-        }
-      }
-    ]
   })} />
 </BaseLayout>

@@ -1,0 +1,83 @@
+---
+import Container from "@/components/layout/Container.astro";
+import SectionLabel from "@/components/shared/SectionLabel.astro";
+import ScrollReveal from "@/components/shared/ScrollReveal.astro";
+import { trades, localHub } from "@/lib/trades";
+
+interface Props {
+  heading: string;
+  label?: string;
+  intro?: string;
+  /** omit the current trade from the grid (for cross-link sections) */
+  excludeSlug?: string;
+  /** add the local Karlsruhe hub as an additional entry */
+  includeHub?: boolean;
+  variant?: "cards" | "chips";
+  id?: string;
+  bg?: string;
+}
+
+const {
+  heading,
+  label,
+  intro,
+  excludeSlug,
+  includeHub = false,
+  variant = "cards",
+  id,
+  bg = "bg-surface-muted",
+} = Astro.props;
+
+const items = [
+  ...trades
+    .filter((t) => t.slug !== excludeSlug)
+    .map((t) => ({ nav: t.nav, navLong: t.navLong, href: t.href, tagline: t.tagline })),
+  ...(includeHub
+    ? [{ nav: localHub.nav, navLong: localHub.navLong, href: localHub.href, tagline: localHub.tagline }]
+    : []),
+];
+---
+<section id={id} class:list={[bg, "py-[clamp(64px,8vw,120px)]"]}>
+  <Container>
+    <ScrollReveal>
+      <div class="mb-10 max-w-2xl">
+        {label && <SectionLabel text={label} />}
+        <h2 class="font-heading text-3xl text-text sm:text-4xl">{heading}</h2>
+        {intro && <p class="mt-4 text-lg leading-relaxed text-text-secondary">{intro}</p>}
+      </div>
+    </ScrollReveal>
+
+    {variant === "cards" ? (
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((t) => (
+          <a
+            href={t.href}
+            aria-label={t.navLong}
+            class="group flex flex-col rounded-2xl border border-border bg-surface p-6 transition-all hover:border-accent/40 hover:shadow-md"
+          >
+            <h3 class="mb-2 font-heading text-xl text-text">{t.navLong}</h3>
+            <p class="mb-4 flex-1 text-sm leading-relaxed text-text-secondary">{t.tagline}</p>
+            <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent">
+              Mehr erfahren
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
+        {items.map((t) => (
+          <a
+            href={t.href}
+            aria-label={t.navLong}
+            class="flex items-center justify-center rounded-xl border border-border bg-surface px-3 py-4 text-center text-sm font-medium text-text-secondary transition-all hover:border-accent/40 hover:text-accent hover:shadow-sm"
+          >
+            {t.nav}
+          </a>
+        ))}
+      </div>
+    )}
+  </Container>
+</section>

@@ -26,7 +26,6 @@ const {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Handwerker Website, Webseite Handwerk, Elektriker Website, Sanitär Website, Kfz Website, DSGVO, Karlsruhe, Festpreis, 499 Euro, alles inklusive, kein Abo, Handwerker Webseite Karlsruhe" />
     <meta name="author" content="Wanja Mensch – DigitalHandwerk" />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
@@ -99,9 +98,12 @@ const {
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
+      "@id": "https://www.digitalhandwerk.net/#organization",
       "name": "DigitalHandwerk – Wanja Mensch",
       "description": "Website für Handwerksbetriebe aus Karlsruhe – 499 € Festpreis, alles inklusive: Design, SEO, DSGVO, Kontaktformular. Kein Abo, keine versteckten Kosten. Deutschlandweit.",
       "url": "https://www.digitalhandwerk.net",
+      "logo": new URL("/android-chrome-512x512.png", Astro.site).href,
+      "image": new URL(ogImage, Astro.site).href,
       "telephone": "+4915733962986",
       "email": "projekt@digitalhandwerk.net",
       "address": {

@@ -7,13 +7,19 @@ import ScrollReveal from "@/components/shared/ScrollReveal.astro";
 import PackagesSection from "@/components/sections/PackagesSection.astro";
 import ProcessSection from "@/components/sections/ProcessSection.astro";
 import ContactSection from "@/components/sections/ContactSection.astro";
-import FaqSection from "@/components/sections/FaqSection.astro";
+import Breadcrumbs from "@/components/shared/Breadcrumbs.astro";
+import TradeServices from "@/components/sections/TradeServices.astro";
+import TradeFaq from "@/components/sections/TradeFaq.astro";
+import TradesGrid from "@/components/sections/TradesGrid.astro";
+import TradeSchema from "@/components/sections/TradeSchema.astro";
+import { tradeBySlug } from "@/lib/trades";
 import { Image } from "astro:assets";
 import heroImg from "@/assets/hero-schreiner.webp";
 
-const title = "Website für Schreiner erstellen lassen – 499 € | DigitalHandwerk";
+const title = "Website für Schreiner erstellen – 499 € | DigitalHandwerk";
 const description = "Professionelle Website für Schreinereien ab 499 € – zeigen Sie Ihre Arbeit, gewinnen Sie mehr Aufträge. DSGVO-konform, mobiloptimiert, deutschlandweit.";
 const canonical = "https://www.digitalhandwerk.net/website-fuer-schreiner/";
+const trade = tradeBySlug["schreiner"];
 ---
 <BaseLayout title={title} description={description} canonical={canonical}>
   <Header />
@@ -97,6 +103,14 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-schreiner/";
       </Container>
     </section>
 
+    <Breadcrumbs
+      items={[
+        { name: "Start", href: "/" },
+        { name: "Webdesign Karlsruhe", href: "/webdesign-karlsruhe-handwerker/" },
+        { name: trade.navLong, href: trade.href },
+      ]}
+    />
+
     <!-- Trade-specific benefits -->
     <section class="bg-surface py-[clamp(64px,8vw,120px)]">
       <Container>
@@ -143,60 +157,23 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-schreiner/";
       </Container>
     </section>
 
+    <TradeServices
+      heading={trade.servicesHeading}
+      intro={trade.servicesIntro}
+      services={trade.services}
+    />
     <PackagesSection />
     <ProcessSection />
-    <FaqSection />
+    <TradeFaq heading={trade.faqHeading} faqs={trade.faqs} />
+    <TradesGrid
+      excludeSlug={trade.slug}
+      includeHub
+      variant="chips"
+      heading="Auch für andere Gewerke"
+    />
     <ContactSection />
   </main>
   <Footer />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Webdesign für Schreinereien",
-    "provider": {
-      "@type": "ProfessionalService",
-      "name": "DigitalHandwerk – Wanja Mensch",
-      "url": "https://www.digitalhandwerk.net"
-    },
-    "areaServed": { "@type": "Country", "name": "Deutschland" },
-    "description": "Professionelle Websites für Schreinereien ab 499 € – mit Referenzgalerie, DSGVO-konform, SEO-optimiert.",
-    "offers": {
-      "@type": "Offer",
-      "price": "499",
-      "priceCurrency": "EUR",
-      "description": "499 € Festpreis – Website für Schreinereien, alles inklusive."
-    }
-  })} />
-
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Was kostet eine Website für eine Schreinerei?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Eine professionelle Website für Ihre Schreinerei kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Enthalten sind Design, Referenzgalerie, SEO-Grundlagen, DSGVO-konforme Umsetzung und Kontaktformular. Kein Abo, keine versteckten Kosten."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Kann ich meine Projekte als Schreiner auf der Website zeigen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja, absolut. Eine Projektreferenz- oder Galerie-Sektion ist eines der wirkungsvollsten Elemente für Schreiner-Websites. Kunden sehen sofort die Qualität Ihrer Arbeit – das schafft Vertrauen, bevor das erste Gespräch stattfindet. Sie liefern die Fotos, ich integriere sie professionell."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wie finden mich Kunden, die einen Schreiner suchen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Durch lokale SEO-Optimierung rankt Ihre Website für Suchanfragen wie 'Schreiner Karlsruhe', 'Maßmöbel Schreinerei' oder 'Kücheneinbau Tischler'. Mit optimierten Meta-Tags, sauberem Code und strukturierten Daten sorgen wir dafür, dass Google Ihren Betrieb korrekt einordnet."
-        }
-      }
-    ]
-  })} />
+  <TradeSchema trade={trade} />
 </BaseLayout>

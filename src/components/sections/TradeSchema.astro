@@ -1,0 +1,37 @@
+---
+import type { Trade } from "@/lib/trades";
+
+interface Props {
+  trade: Trade;
+}
+
+const { trade } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: trade.serviceType,
+  provider: {
+    "@type": "ProfessionalService",
+    "@id": "https://www.digitalhandwerk.net/#organization",
+    name: "DigitalHandwerk – Wanja Mensch",
+    url: "https://www.digitalhandwerk.net",
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Karlsruhe",
+      containedInPlace: { "@type": "AdministrativeArea", name: "Baden-Württemberg" },
+    },
+    { "@type": "Country", name: "Deutschland" },
+  ],
+  description: trade.serviceDescription,
+  offers: {
+    "@type": "Offer",
+    price: "499",
+    priceCurrency: "EUR",
+    description: `499 € Festpreis – ${trade.serviceType}, alles inklusive.`,
+  },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

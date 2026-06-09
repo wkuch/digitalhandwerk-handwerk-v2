@@ -1,0 +1,44 @@
+---
+import Container from "@/components/layout/Container.astro";
+
+interface Crumb {
+  name: string;
+  /** path with trailing slash, e.g. "/website-fuer-elektriker/" */
+  href: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const site = Astro.site ?? new URL("https://www.digitalhandwerk.net/");
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    item: new URL(c.href, site).href,
+  })),
+};
+---
+<nav aria-label="Brotkrumennavigation" class="border-b border-border bg-surface">
+  <Container class="py-3">
+    <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-text-muted">
+      {items.map((c, i) => (
+        <li class="flex items-center gap-x-2">
+          {i > 0 && <span aria-hidden="true" class="text-border-subtle">›</span>}
+          {i < items.length - 1 ? (
+            <a href={c.href} class="transition-colors hover:text-accent">{c.name}</a>
+          ) : (
+            <span class="text-text-secondary" aria-current="page">{c.name}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </Container>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

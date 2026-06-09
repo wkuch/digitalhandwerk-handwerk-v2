@@ -7,13 +7,19 @@ import ScrollReveal from "@/components/shared/ScrollReveal.astro";
 import PackagesSection from "@/components/sections/PackagesSection.astro";
 import ProcessSection from "@/components/sections/ProcessSection.astro";
 import ContactSection from "@/components/sections/ContactSection.astro";
-import FaqSection from "@/components/sections/FaqSection.astro";
+import Breadcrumbs from "@/components/shared/Breadcrumbs.astro";
+import TradeServices from "@/components/sections/TradeServices.astro";
+import TradeFaq from "@/components/sections/TradeFaq.astro";
+import TradesGrid from "@/components/sections/TradesGrid.astro";
+import TradeSchema from "@/components/sections/TradeSchema.astro";
+import { tradeBySlug } from "@/lib/trades";
 import { Image } from "astro:assets";
 import heroImg from "@/assets/hero-sanitaer.webp";
 
 const title = "Website für Sanitärbetrieb – 499 € Festpreis | DigitalHandwerk";
 const description = "Professionelle Website für Sanitärbetriebe ab 499 € – DSGVO-konform, mobiloptimiert, auf lokale Kundenanfragen ausgerichtet. Deutschlandweit, Schwerpunkt Karlsruhe.";
 const canonical = "https://www.digitalhandwerk.net/website-fuer-sanitaer/";
+const trade = tradeBySlug["sanitaer"];
 ---
 <BaseLayout title={title} description={description} canonical={canonical}>
   <Header />
@@ -97,6 +103,14 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-sanitaer/";
       </Container>
     </section>
 
+    <Breadcrumbs
+      items={[
+        { name: "Start", href: "/" },
+        { name: "Webdesign Karlsruhe", href: "/webdesign-karlsruhe-handwerker/" },
+        { name: trade.navLong, href: trade.href },
+      ]}
+    />
+
     <!-- Trade-specific benefits -->
     <section class="bg-surface py-[clamp(64px,8vw,120px)]">
       <Container>
@@ -143,60 +157,23 @@ const canonical = "https://www.digitalhandwerk.net/website-fuer-sanitaer/";
       </Container>
     </section>
 
+    <TradeServices
+      heading={trade.servicesHeading}
+      intro={trade.servicesIntro}
+      services={trade.services}
+    />
     <PackagesSection />
     <ProcessSection />
-    <FaqSection />
+    <TradeFaq heading={trade.faqHeading} faqs={trade.faqs} />
+    <TradesGrid
+      excludeSlug={trade.slug}
+      includeHub
+      variant="chips"
+      heading="Auch für andere Gewerke"
+    />
     <ContactSection />
   </main>
   <Footer />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Webdesign für Sanitärbetriebe",
-    "provider": {
-      "@type": "ProfessionalService",
-      "name": "DigitalHandwerk – Wanja Mensch",
-      "url": "https://www.digitalhandwerk.net"
-    },
-    "areaServed": { "@type": "Country", "name": "Deutschland" },
-    "description": "Professionelle Websites für Sanitärbetriebe ab 499 € – DSGVO-konform, mobiloptimiert, SEO-optimiert.",
-    "offers": {
-      "@type": "Offer",
-      "price": "499",
-      "priceCurrency": "EUR",
-      "description": "499 € Festpreis – Website für Sanitärbetriebe, alles inklusive."
-    }
-  })} />
-
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Was kostet eine Website für einen Sanitärbetrieb?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Eine professionelle Website für Ihren Sanitärbetrieb kostet bei DigitalHandwerk 499 € als einmaliger Festpreis. Enthalten: Design, SEO-Grundlagen, DSGVO-konforme Umsetzung mit Impressum und Datenschutzerklärung, mobil-optimiertes Layout und Kontaktformular. Kein Abo, keine versteckten Kosten."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wie kann ich als Sanitärbetrieb bei Google gefunden werden?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Mit einer lokalen SEO-Optimierung Ihrer Website ranken Sie für Suchanfragen wie 'Sanitär Karlsruhe' oder 'Klempner Notfall'. Die Website enthält strukturierte Daten, schnelle Ladezeiten und optimierte Meta-Tags, damit Google Ihren Betrieb korrekt einordnet und lokal anzeigt."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wie lange dauert es, bis meine Sanitär-Website online ist?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In der Regel ist die Website innerhalb von 2–4 Wochen fertig und live. Nach einem kurzen Erstgespräch erhalten Sie einen konkreten Zeitplan mit klaren Meilensteinen."
-        }
-      }
-    ]
-  })} />
+  <TradeSchema trade={trade} />
 </BaseLayout>

@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Hero from "@/components/sections/Hero.astro";
 import WhySection from "@/components/sections/WhySection.astro";
+import TradesGrid from "@/components/sections/TradesGrid.astro";
 import PackagesSection from "@/components/sections/PackagesSection.astro";
 import ProcessSection from "@/components/sections/ProcessSection.astro";
 import ReferencesSection from "@/components/sections/ReferencesSection.astro";
@@ -21,6 +22,14 @@ import ContactSection from "@/components/sections/ContactSection.astro";
   <main id="main">
     <Hero />
     <WhySection />
+    <TradesGrid
+      id="branchen"
+      label="Branchen"
+      heading="Websites für Ihr Gewerk"
+      intro="Jedes Handwerk hat eigene Kunden, eigene Suchbegriffe und eigene Anforderungen. Für die wichtigsten Gewerke gibt es deshalb eine eigene, passgenau optimierte Seite – wählen Sie Ihre:"
+      includeHub
+      variant="cards"
+    />
     <PackagesSection />
     <ProcessSection />
     <ReferencesSection />
