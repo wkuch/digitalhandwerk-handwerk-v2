@@ -10,12 +10,11 @@ export function FaqIsland() {
         <AccordionContent>
           <div className="space-y-2 text-text-secondary">
             <p><strong>Website-Erstellung:</strong> 499 € Festpreis. Kontaktformular, SEO, DSGVO: alles inklusive. Keine versteckten Kosten.</p>
-            <p><strong>Domain & Hosting:</strong> Optional. Sie wählen Ihren Anbieter oder ich übernehme das:</p>
+            <p><strong>Laufende Betreuung:</strong> Optional und monatlich kündbar:</p>
             <ul className="ml-4 list-disc space-y-1 text-sm">
-              <li>Hosting bei vorhandener Domain: ab 5 € / Monat</li>
-              <li>Domain-Beschaffung und Einrichtung: auf Anfrage</li>
+              <li><strong>Technik-Paket (15 € / Monat):</strong> Hosting, Domain & SSL, Updates, Backups, Monitoring</li>
+              <li><strong>Sorglos-Paket (29 € / Monat):</strong> alles aus Technik – plus Änderungen inklusive: neue Texte, Bilder oder Öffnungszeiten, kurz anrufen genügt</li>
             </ul>
-            <p><strong>Wartung & Updates:</strong> Optional ab 5 € / Monat, erweiterte Betreuung nach Absprache.</p>
           </div>
         </AccordionContent>
       </AccordionItem>
@@ -26,10 +25,10 @@ export function FaqIsland() {
           <div className="space-y-2 text-text-secondary">
             <p>Ja, optional und monatlich kündbar:</p>
             <ul className="ml-4 list-disc space-y-1 text-sm">
-              <li><strong>Basis-Wartung:</strong> Updates und Sicherheitschecks, ab 5 € / Monat</li>
-              <li><strong>Erweitert:</strong> Backups, Monitoring, Inhaltsanpassungen, nach Absprache</li>
+              <li><strong>Technik-Paket (15 € / Monat):</strong> Hosting, Domain & SSL, Updates, Backups und Monitoring</li>
+              <li><strong>Sorglos-Paket (29 € / Monat):</strong> alles aus Technik – plus Inhaltsänderungen inklusive (neue Texte, Bilder, Öffnungszeiten) und ein jährlicher Website-Check</li>
             </ul>
-            <p className="text-sm text-text-muted">Sie entscheiden, was Sie brauchen und wann.</p>
+            <p className="text-sm text-text-muted">Neue Handynummer, Betriebsurlaub, ein neues Projektfoto? Eine kurze Nachricht genügt – ich kümmere mich.</p>
           </div>
         </AccordionContent>
       </AccordionItem>
