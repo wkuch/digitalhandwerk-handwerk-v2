@@ -1,0 +1,315 @@
+---
+// Preview mockup: looks like the prospect's future website, not like a
+// DigitalHandwerk page. Standalone head: no gtag, no cookie banner, noindex.
+import "@/styles/global.css";
+import { Image } from "astro:assets";
+import { previewProspects, previewThemes } from "@/lib/previews";
+import { tradeBySlug } from "@/lib/trades";
+
+import heroSchreiner from "@/assets/hero-schreiner.webp";
+import heroElektriker from "@/assets/hero-elektriker.webp";
+import heroMaler from "@/assets/hero-maler.webp";
+import heroDachdecker from "@/assets/hero-dachdecker.webp";
+import heroSanitaer from "@/assets/hero-sanitaer.webp";
+import heroKfz from "@/assets/hero-kfz.webp";
+import heroGartenbau from "@/assets/hero-gartenbau.webp";
+import heroZimmerei from "@/assets/hero-zimmerei.webp";
+import heroFliesenleger from "@/assets/hero-fliesenleger.webp";
+import heroFlaschner from "@/assets/hero-flaschner.webp";
+
+export function getStaticPaths() {
+  return previewProspects.map((prospect) => ({
+    params: { slug: prospect.slug },
+    props: { prospect },
+  }));
+}
+
+const heroImages: Record<string, ImageMetadata> = {
+  schreiner: heroSchreiner,
+  elektriker: heroElektriker,
+  maler: heroMaler,
+  dachdecker: heroDachdecker,
+  sanitaer: heroSanitaer,
+  "kfz-betrieb": heroKfz,
+  gartenbau: heroGartenbau,
+  zimmerei: heroZimmerei,
+  fliesenleger: heroFliesenleger,
+  flaschner: heroFlaschner,
+};
+
+const { prospect } = Astro.props;
+const theme = previewThemes[prospect.trade];
+const trade = tradeBySlug[prospect.trade];
+if (!theme) {
+  throw new Error(`Unknown trade "${prospect.trade}" for preview "${prospect.slug}"`);
+}
+const services = theme.services ?? trade?.services;
+const servicesHeading = theme.servicesHeading ?? trade?.servicesHeading;
+if (!services || !servicesHeading) {
+  throw new Error(`No services defined for trade "${prospect.trade}" (preview "${prospect.slug}")`);
+}
+
+const heroImage = heroImages[prospect.trade];
+const headline = theme.heroHeadline.replace("{town}", prospect.town);
+const telHref = prospect.phone ? `tel:+49${prospect.phone.replace(/\D/g, "").replace(/^0/, "")}` : "#kontakt";
+const phoneDisplay = prospect.phone ?? "0000 00 00 00";
+
+const headingFont =
+  theme.heading === "serif" ? '"Instrument Serif", Georgia, serif' : '"Inter", system-ui, sans-serif';
+const headingWeight = theme.heading === "serif" ? "400" : theme.heading === "sans-caps" ? "700" : "600";
+const headingTransform = theme.heading === "sans-caps" ? "uppercase" : "none";
+const headingTracking = theme.heading === "sans-caps" ? "0.03em" : "-0.02em";
+
+const themeStyle = [
+  `--p-bg:${theme.vars.bg}`,
+  `--p-surface:${theme.vars.surface}`,
+  `--p-surface-muted:${theme.vars.surfaceMuted}`,
+  `--p-text:${theme.vars.text}`,
+  `--p-text-2:${theme.vars.textSecondary}`,
+  `--p-border:${theme.vars.border}`,
+  `--p-accent:${theme.vars.accent}`,
+  `--p-accent-deep:${theme.vars.accentDeep}`,
+  `--p-on-accent:${theme.vars.onAccent}`,
+  `--p-radius:${theme.vars.radius}`,
+  `--p-font-heading:${headingFont}`,
+  `--p-h-weight:${headingWeight}`,
+  `--p-h-transform:${headingTransform}`,
+  `--p-h-tracking:${headingTracking}`,
+].join(";");
+
+const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.town} | Entwurf`;
+---
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={`Unverbindlicher Website-Entwurf für ${prospect.businessName}, ${prospect.town} – erstellt von DigitalHandwerk.`} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="preload" href="/fonts/instrument-serif-v5-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body class="min-h-screen antialiased">
+    <div class="pv" style={themeStyle} data-mode={theme.mode}>
+
+      <!-- ===== DigitalHandwerk draft ribbon (deliberately NOT part of the mockup design) ===== -->
+      <div class="sticky top-0 z-50 bg-stone-900 px-4 py-2 text-center text-xs text-stone-300 sm:text-sm">
+        <span class="font-medium text-white">Unverbindlicher Entwurf</span>
+        für {prospect.businessName}
+        <span class="mx-2 hidden text-stone-600 sm:inline">|</span>
+        <span class="block sm:inline">
+          erstellt von <a href="https://www.digitalhandwerk.net/" class="font-medium text-emerald-400 underline-offset-2 hover:underline">DigitalHandwerk</a>
+          · <a href="tel:+4915733962986" class="text-emerald-400 hover:underline">0157 3396 2986</a>
+        </span>
+      </div>
+
+      <!-- ===== Mockup: their future website starts here ===== -->
+      <div class="bg-[var(--p-bg)] text-[var(--p-text)]">
+
+        <!-- Nav -->
+        <header class="border-b border-[var(--p-border)] bg-[var(--p-bg)]/95">
+          <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+            <span class="pv-heading text-xl sm:text-2xl">{prospect.businessName}</span>
+            <nav class="hidden items-center gap-7 text-sm text-[var(--p-text-2)] md:flex">
+              <a href="#leistungen" class="transition-colors hover:text-[var(--p-text)]">Leistungen</a>
+              <a href="#ueber-uns" class="transition-colors hover:text-[var(--p-text)]">Über uns</a>
+              <a href="#referenzen" class="transition-colors hover:text-[var(--p-text)]">Referenzen</a>
+              <a href="#kontakt" class="transition-colors hover:text-[var(--p-text)]">Kontakt</a>
+            </nav>
+            <a href={telHref} class="rounded-[var(--p-radius)] bg-[var(--p-accent)] px-4 py-2 text-sm font-semibold text-[var(--p-on-accent)] transition-opacity hover:opacity-90">
+              {phoneDisplay}
+            </a>
+          </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="relative overflow-hidden">
+          <div class="absolute inset-0">
+            <Image src={heroImage} alt="" class="h-full w-full object-cover" widths={[800, 1400]} sizes="100vw" loading="eager" />
+            <div class="pv-hero-overlay absolute inset-0"></div>
+          </div>
+          <div class="relative mx-auto max-w-6xl px-5 py-[clamp(90px,14vw,180px)]">
+            <p class="pv-rise mb-4 inline-block rounded-[var(--p-radius)] bg-[var(--p-accent)] px-3 py-1 text-xs font-semibold tracking-wide text-[var(--p-on-accent)]" style="animation-delay:0ms">
+              {theme.tradeNoun} · {prospect.town}
+            </p>
+            <h1 class="pv-heading pv-rise mb-5 max-w-2xl text-4xl sm:text-5xl lg:text-6xl" style="animation-delay:90ms">
+              {headline}
+            </h1>
+            <p class="pv-rise mb-9 max-w-xl text-lg leading-relaxed" style="animation-delay:180ms">
+              {theme.heroSub}
+            </p>
+            <div class="pv-rise flex flex-wrap items-center gap-4" style="animation-delay:270ms">
+              <a href={telHref} class="rounded-[var(--p-radius)] bg-[var(--p-accent)] px-6 py-3.5 font-semibold text-[var(--p-on-accent)] shadow-lg transition-transform hover:scale-[1.02]">
+                Jetzt anrufen
+              </a>
+              <a href="#leistungen" class="rounded-[var(--p-radius)] border border-current px-6 py-3.5 font-medium transition-colors hover:bg-[var(--p-surface)]/20">
+                Unsere Leistungen
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Trust strip -->
+        <div class="border-y border-[var(--p-border)] bg-[var(--p-surface)]">
+          <div class="mx-auto grid max-w-6xl gap-2 px-5 py-5 text-sm sm:grid-cols-3 sm:text-center">
+            <span><strong class="text-[var(--p-accent)]">✓</strong> Persönliche Beratung</span>
+            <span><strong class="text-[var(--p-accent)]">✓</strong> Faire, transparente Preise</span>
+            <span><strong class="text-[var(--p-accent)]">✓</strong> Aus {prospect.town} für die Region</span>
+          </div>
+        </div>
+
+        <!-- Leistungen -->
+        <section id="leistungen" class="mx-auto max-w-6xl px-5 py-[clamp(64px,9vw,120px)]">
+          <p class="mb-3 text-sm font-semibold tracking-widest text-[var(--p-accent)] uppercase">Leistungen</p>
+          <h2 class="pv-heading mb-4 max-w-xl text-3xl sm:text-4xl">{servicesHeading}</h2>
+          <p class="mb-12 max-w-xl text-[var(--p-text-2)]">Alles aus einer Hand – sprechen Sie uns an, auch wenn Ihr Anliegen hier nicht dabei ist.</p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {services.map((service, i) => (
+              <div class="flex items-center gap-5 rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-surface)] px-6 py-5">
+                <span class="pv-heading text-2xl text-[var(--p-accent)]">{String(i + 1).padStart(2, "0")}</span>
+                <span class="font-medium">{service}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Über uns -->
+        <section id="ueber-uns" class="bg-[var(--p-surface-muted)]">
+          <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-[clamp(64px,9vw,120px)] md:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p class="mb-3 text-sm font-semibold tracking-widest text-[var(--p-accent)] uppercase">Über uns</p>
+              <h2 class="pv-heading mb-5 text-3xl sm:text-4xl">Handwerk mit Handschlagqualität</h2>
+              <p class="mb-4 leading-relaxed text-[var(--p-text-2)]">
+                {prospect.businessName} steht für saubere Arbeit, ehrliche Beratung und Termine, die halten.
+                Aus {prospect.town} – für {prospect.town} und die Region.
+              </p>
+              <p class="rounded-[var(--p-radius)] border border-dashed border-[var(--p-accent)] bg-[var(--p-surface)] px-4 py-3 text-sm text-[var(--p-text-2)]">
+                ✎ Hier steht später Ihre Geschichte: seit wann es Ihren Betrieb gibt, wer dahintersteht,
+                was Ihre Kunden an Ihnen schätzen. Ihr Text – ich helfe beim Formulieren.
+              </p>
+            </div>
+            <div class="flex aspect-[4/3] items-center justify-center rounded-[var(--p-radius)] border-2 border-dashed border-[var(--p-border)] bg-[var(--p-surface)] text-center">
+              <div class="px-6 text-[var(--p-text-2)]">
+                <svg class="mx-auto mb-3 h-10 w-10 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+                </svg>
+                <p class="text-sm font-medium">Ihr Foto: Sie, Ihr Team oder Ihre Werkstatt</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Referenzen / Galerie -->
+        <section id="referenzen" class="mx-auto max-w-6xl px-5 py-[clamp(64px,9vw,120px)]">
+          <p class="mb-3 text-sm font-semibold tracking-widest text-[var(--p-accent)] uppercase">Referenzen</p>
+          <h2 class="pv-heading mb-12 text-3xl sm:text-4xl">Arbeit, die für sich spricht</h2>
+          <div class="grid gap-4 sm:grid-cols-3">
+            {[1, 2, 3].map(() => (
+              <div class="flex aspect-square items-center justify-center rounded-[var(--p-radius)] border-2 border-dashed border-[var(--p-border)] bg-[var(--p-surface)] p-6 text-center text-sm text-[var(--p-text-2)]">
+                {theme.galleryHint} – Fotos vom Smartphone genügen
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Kontakt -->
+        <section id="kontakt" class="bg-[var(--p-surface-muted)]">
+          <div class="mx-auto grid max-w-6xl gap-10 px-5 py-[clamp(64px,9vw,120px)] md:grid-cols-2">
+            <div>
+              <p class="mb-3 text-sm font-semibold tracking-widest text-[var(--p-accent)] uppercase">Kontakt</p>
+              <h2 class="pv-heading mb-6 text-3xl sm:text-4xl">Sprechen Sie uns an</h2>
+              <a href={telHref} class="pv-heading mb-6 block text-3xl text-[var(--p-accent)] sm:text-4xl">{phoneDisplay}</a>
+              <address class="space-y-1 text-[var(--p-text-2)] not-italic">
+                <p>{prospect.businessName}</p>
+                {prospect.street && <p>{prospect.street}, {prospect.town}</p>}
+                {!prospect.street && <p>{prospect.town}</p>}
+              </address>
+            </div>
+            <form class="rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-surface)] p-6">
+              <fieldset disabled class="space-y-4 opacity-80">
+                <input type="text" placeholder="Ihr Name" class="w-full rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-bg)] px-4 py-3 text-sm" />
+                <input type="tel" placeholder="Telefon oder E-Mail" class="w-full rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-bg)] px-4 py-3 text-sm" />
+                <textarea rows="3" placeholder="Worum geht es?" class="w-full rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-bg)] px-4 py-3 text-sm"></textarea>
+                <button type="button" class="w-full rounded-[var(--p-radius)] bg-[var(--p-accent)] px-6 py-3 font-semibold text-[var(--p-on-accent)]">Anfrage senden</button>
+              </fieldset>
+              <p class="mt-3 text-center text-xs text-[var(--p-text-2)]">Im Entwurf deaktiviert – auf Ihrer fertigen Website landet jede Anfrage direkt in Ihrem E-Mail-Postfach.</p>
+            </form>
+          </div>
+        </section>
+
+        <!-- Mockup footer -->
+        <footer class="border-t border-[var(--p-border)] bg-[var(--p-bg)]">
+          <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-6 text-sm text-[var(--p-text-2)]">
+            <span>© {new Date().getFullYear()} {prospect.businessName}, {prospect.town}</span>
+            <span>Impressum &amp; Datenschutz <span class="opacity-70">(werden bei Umsetzung ergänzt)</span></span>
+          </div>
+        </footer>
+      </div>
+      <!-- ===== Mockup ends ===== -->
+
+      <!-- DigitalHandwerk pitch -->
+      <section class="bg-stone-900 px-5 py-16 text-center">
+        <div class="mx-auto max-w-2xl">
+          <p class="mb-3 text-sm font-semibold tracking-widest text-emerald-400 uppercase">DigitalHandwerk · Karlsruhe</p>
+          <h2 class="mb-4 font-heading text-3xl text-white sm:text-4xl">Gefällt Ihnen dieser Entwurf?</h2>
+          <p class="mb-4 leading-relaxed text-stone-300">
+            Das hier ist ein erster Vorschlag – kein fertiges Produkt. Ihre Website wird genau so,
+            wie Ihr Betrieb sie braucht: mit Ihren Fotos, Ihren Texten, Ihren Farben.
+            Gerne auch größer oder ganz anders – mehr Unterseiten, Bildergalerie,
+            Online-Terminanfrage, ein eigener Stil. Alles ist machbar.
+          </p>
+          <p class="mb-8 leading-relaxed text-stone-300">
+            Eine komplette Website wie dieser Entwurf: <strong class="text-white">499&nbsp;€ Festpreis</strong>,
+            alles inklusive, online in 2–4 Wochen. Kein Abo, keine versteckten Kosten.
+            Alles, was darüber hinausgeht, besprechen wir im kostenlosen Erstgespräch –
+            Sie bekommen vorab ein faires Angebot.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="tel:+4915733962986" class="rounded-lg bg-emerald-600 px-6 py-3.5 font-semibold text-white transition-colors hover:bg-emerald-500">
+              ☎ 0157 3396 2986
+            </a>
+            <a href="https://www.digitalhandwerk.net/" class="rounded-lg border border-stone-600 px-6 py-3.5 font-medium text-stone-200 transition-colors hover:border-stone-400">
+              www.digitalhandwerk.net
+            </a>
+          </div>
+          <p class="mt-6 text-xs text-stone-500">
+            Unverbindlicher Gestaltungsentwurf. Diese Seite ist keine Website von {prospect.businessName} und enthält Platzhalter-Inhalte.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <style>
+      .pv .pv-heading {
+        font-family: var(--p-font-heading);
+        font-weight: var(--p-h-weight);
+        text-transform: var(--p-h-transform);
+        letter-spacing: var(--p-h-tracking);
+        line-height: 1.1;
+        text-wrap: balance;
+      }
+      /* hero overlay adapts to light/dark themes */
+      .pv[data-mode="light"] .pv-hero-overlay {
+        background: linear-gradient(to right, color-mix(in srgb, var(--p-bg) 92%, transparent) 20%, color-mix(in srgb, var(--p-bg) 55%, transparent) 60%, color-mix(in srgb, var(--p-bg) 25%, transparent));
+      }
+      .pv[data-mode="dark"] .pv-hero-overlay {
+        background: linear-gradient(to right, color-mix(in srgb, var(--p-bg) 94%, transparent) 20%, color-mix(in srgb, var(--p-bg) 70%, transparent) 60%, color-mix(in srgb, var(--p-bg) 35%, transparent));
+      }
+      /* staggered hero entrance */
+      .pv-rise {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: pv-rise 0.7s ease-out forwards;
+      }
+      @keyframes pv-rise {
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .pv-rise { opacity: 1; transform: none; animation: none; }
+      }
+    </style>
+  </body>
+</html>

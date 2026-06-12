@@ -13,6 +13,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
+      filter: (page) => !page.includes('/vorschau/'),
       serialize(item) {
         const importantPages = [
           'website-fuer-elektriker',

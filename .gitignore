@@ -10,3 +10,4 @@ dist/
 # local data & scripts
 google_ads_data/
 take-screenshots.py
+prospects/
