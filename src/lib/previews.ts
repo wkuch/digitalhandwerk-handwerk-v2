@@ -77,10 +77,11 @@ export const previewThemes: Record<string, PreviewTheme> = {
     },
     heading: "serif",
     tradeNoun: "Schreinerei",
-    heroHeadline: "Möbel nach Maß. Handwerk aus {town}.",
+    heroHeadline: "Möbel nach Maß aus {town}",
     heroSub:
-      "Vom Einbauschrank über Türen bis zum kompletten Innenausbau – Holzarbeiten, die auf den Millimeter passen. Persönlich geplant, sauber umgesetzt.",
+      "Einbauschränke, Türen, Innenausbau. Wir planen mit Ihnen, fertigen in der eigenen Werkstatt und bauen sauber bei Ihnen ein.",
     galleryHint: "Ihre Möbel & Projekte",
+    servicesHeading: "Was wir für Sie bauen",
   },
   elektriker: {
     mode: "dark",
@@ -98,10 +99,11 @@ export const previewThemes: Record<string, PreviewTheme> = {
     },
     heading: "sans-caps",
     tradeNoun: "Elektrotechnik",
-    heroHeadline: "Strom, Licht & smarte Technik in {town}",
+    heroHeadline: "Ihr Elektriker in {town}",
     heroSub:
-      "Von der Steckdose bis zur Wallbox: Elektroinstallationen, die zuverlässig laufen – im Neubau, in der Sanierung und im Notfall.",
+      "Von der Steckdose bis zur Wallbox, im Neubau, bei der Sanierung und wenn es schnell gehen muss. Sauber installiert und zuverlässig.",
     galleryHint: "Ihre Anlagen & Projekte",
+    servicesHeading: "Das machen wir für Sie",
   },
   maler: {
     mode: "light",
@@ -121,8 +123,9 @@ export const previewThemes: Record<string, PreviewTheme> = {
     tradeNoun: "Malerfachbetrieb",
     heroHeadline: "Frische Farbe für {town}",
     heroSub:
-      "Innenräume, Fassaden, Lackierarbeiten – saubere Ausführung, ordentliche Baustelle und ein Ergebnis, das lange hält.",
+      "Innenräume, Fassaden, Lackierarbeiten. Wir decken sauber ab, halten die Baustelle ordentlich und Sie ziehen in fertige Räume.",
     galleryHint: "Vorher / Nachher",
+    servicesHeading: "Womit wir Ihnen weiterhelfen",
   },
   dachdecker: {
     mode: "light",
@@ -140,10 +143,11 @@ export const previewThemes: Record<string, PreviewTheme> = {
     },
     heading: "sans-caps",
     tradeNoun: "Dachdeckerbetrieb",
-    heroHeadline: "Ihr Dach in guten Händen – {town} & Umgebung",
+    heroHeadline: "Ihr Dachdecker in {town} und Umgebung",
     heroSub:
-      "Neueindeckung, Sanierung, Reparatur nach Sturm: Arbeit, auf die Sie sich verlassen können. Dicht, dauerhaft, sauber ausgeführt.",
+      "Neueindeckung, Sanierung, Reparatur nach dem Sturm. Wir kommen vorbei, schauen uns das Dach an und sagen Ihnen ehrlich, was zu tun ist.",
     galleryHint: "Ihre Dächer & Baustellen",
+    servicesHeading: "Rund ums Dach",
   },
   sanitaer: {
     mode: "light",
@@ -161,10 +165,11 @@ export const previewThemes: Record<string, PreviewTheme> = {
     },
     heading: "sans",
     tradeNoun: "Sanitär & Heizung",
-    heroHeadline: "Bad & Heizung aus einer Hand in {town}",
+    heroHeadline: "Bad und Heizung aus einer Hand in {town}",
     heroSub:
-      "Vom neuen Bad über die Heizungswartung bis zum Rohrbruch-Notdienst – schnelle Hilfe und saubere Installationen vom Fachbetrieb.",
+      "Vom neuen Bad über die Heizungswartung bis zum Rohrbruch am Wochenende. Wir sind schnell da und arbeiten sauber.",
     galleryHint: "Ihre Bäder & Anlagen",
+    servicesHeading: "Womit wir Ihnen weiterhelfen",
   },
   "kfz-betrieb": {
     mode: "dark",
@@ -184,8 +189,9 @@ export const previewThemes: Record<string, PreviewTheme> = {
     tradeNoun: "KFZ-Werkstatt",
     heroHeadline: "Ihre freie Werkstatt in {town}",
     heroSub:
-      "Inspektion, HU-Vorbereitung, Reifen, Bremsen – alle Marken, faire Preise und ein Termin, wenn Sie ihn brauchen.",
+      "Inspektion, HU, Reifen, Bremsen, für alle Marken. Faire Preise, ehrliche Auskunft und ein Termin, wenn Sie ihn brauchen.",
     galleryHint: "Ihre Werkstatt",
+    servicesHeading: "Das bieten wir an",
   },
   gartenbau: {
     mode: "light",
@@ -203,11 +209,11 @@ export const previewThemes: Record<string, PreviewTheme> = {
     },
     heading: "serif",
     tradeNoun: "Garten- & Landschaftsbau",
-    heroHeadline: "Ihr Garten. Unser Handwerk. In {town}.",
+    heroHeadline: "Ihr Garten- und Landschaftsbau in {town}",
     heroSub:
-      "Von der Neuanlage über Pflaster und Natursteinmauern bis zur laufenden Pflege – Außenanlagen, die jedes Jahr schöner werden.",
+      "Neuanlage, Pflasterarbeiten, Natursteinmauern und die laufende Pflege. Wir gestalten Ihren Außenbereich und halten ihn in Form.",
     galleryHint: "Ihre Gärten & Projekte",
-    servicesHeading: "Alles rund um Ihren Garten",
+    servicesHeading: "Rund um Ihren Garten",
     services: [
       "Gartengestaltung & Neuanlage",
       "Pflasterarbeiten & Wege",
@@ -235,9 +241,9 @@ export const previewThemes: Record<string, PreviewTheme> = {
     },
     heading: "sans-caps",
     tradeNoun: "Zimmerei & Holzbau",
-    heroHeadline: "Holzbau, der Bestand hat – {town} & Region",
+    heroHeadline: "Ihre Zimmerei in {town} und Region",
     heroSub:
-      "Dachstühle, Carports, Aufstockungen: massives Handwerk in Holz, geplant und ausgeführt vom Fachbetrieb.",
+      "Dachstühle, Carports, Aufstockungen. Wir planen Ihr Projekt in Holz und führen es vom ersten Balken bis zum letzten Nagel selbst aus.",
     galleryHint: "Ihre Bauprojekte",
     servicesHeading: "Vom Dachstuhl bis zum Anbau",
     services: [
@@ -267,11 +273,11 @@ export const previewThemes: Record<string, PreviewTheme> = {
     },
     heading: "sans",
     tradeNoun: "Fliesenleger",
-    heroHeadline: "Fliesen, präzise verlegt – in {town}",
+    heroHeadline: "Ihr Fliesenleger in {town}",
     heroSub:
-      "Bad, Küche, Terrasse: saubere Flächen, gerade Fugen und Beratung, die zur Nutzung passt – vom Fachbetrieb.",
+      "Bad, Küche, Terrasse: saubere Flächen und gerade Fugen. Wir beraten Sie beim Material und verlegen so, dass es passt.",
     galleryHint: "Ihre Bäder & Flächen",
-    servicesHeading: "Flächen, die überzeugen",
+    servicesHeading: "Was wir für Sie verlegen",
     services: [
       "Bad- & Sanitärfliesen",
       "Großformat & XXL-Fliesen",
@@ -299,11 +305,11 @@ export const previewThemes: Record<string, PreviewTheme> = {
     },
     heading: "serif",
     tradeNoun: "Flaschnerei & Spenglerei",
-    heroHeadline: "Spenglerarbeiten mit Präzision – {town} & Umgebung",
+    heroHeadline: "Ihre Flaschnerei in {town} und Umgebung",
     heroSub:
-      "Dachrinnen, Stehfalz, Verkleidungen: Blecharbeiten nach Maß, die dicht halten und gut aussehen – über Jahrzehnte.",
+      "Dachrinnen, Stehfalz, Verkleidungen. Blecharbeiten nach Maß, die dicht halten, sauber gefertigt und montiert, oft für Jahrzehnte.",
     galleryHint: "Ihre Blecharbeiten",
-    servicesHeading: "Blech & Metall rund ums Dach",
+    servicesHeading: "Blech und Metall rund ums Dach",
     services: [
       "Dachrinnen & Fallrohre",
       "Stehfalz-Bedachungen",

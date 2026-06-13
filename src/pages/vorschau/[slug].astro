@@ -81,7 +81,7 @@ const themeStyle = [
 // Decorative section numerals
 const num = (n: number) => String(n).padStart(2, "0");
 
-const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.town} | Entwurf`;
+const title = `${prospect.businessName} · ${theme.tradeNoun} in ${prospect.town} | Entwurf`;
 ---
 <!doctype html>
 <html lang="de" class="scroll-smooth">
@@ -90,7 +90,7 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="description" content={`Unverbindlicher Website-Entwurf für ${prospect.businessName}, ${prospect.town} – erstellt von DigitalHandwerk.`} />
+    <meta name="description" content={`Unverbindlicher Website-Entwurf für ${prospect.businessName}, ${prospect.town}, erstellt von DigitalHandwerk.`} />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="preload" href="/fonts/instrument-serif-v5-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -169,8 +169,8 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
         <!-- Trust strip -->
         <div class="border-y border-[var(--p-border)] bg-[var(--p-surface)]">
           <div class="mx-auto grid max-w-6xl gap-2 px-5 py-5 text-sm sm:grid-cols-3 sm:text-center">
-            <span><strong class="text-[var(--p-accent)]">✓</strong> Persönliche Beratung</span>
-            <span><strong class="text-[var(--p-accent)]">✓</strong> Faire, transparente Preise</span>
+            <span><strong class="text-[var(--p-accent)]">✓</strong> Meisterbetrieb mit Erfahrung</span>
+            <span><strong class="text-[var(--p-accent)]">✓</strong> Feste Preise, klare Absprachen</span>
             <span><strong class="text-[var(--p-accent)]">✓</strong> Aus {prospect.town} für die Region</span>
           </div>
         </div>
@@ -184,7 +184,7 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
             </div>
             <span class="pv-heading hidden text-6xl leading-none text-[var(--p-border)] sm:block lg:text-7xl">{num(1)}</span>
           </div>
-          <p class="mb-12 max-w-xl text-[var(--p-text-2)]">Alles aus einer Hand – sprechen Sie uns an, auch wenn Ihr Anliegen hier nicht dabei ist.</p>
+          <p class="mb-12 max-w-xl text-[var(--p-text-2)]">Alles aus einer Hand. Sprechen Sie uns an, auch wenn Ihr Anliegen hier nicht dabei ist.</p>
           <div class="grid gap-px overflow-hidden rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-border)] sm:grid-cols-2">
             {services.map((service, i) => (
               <div class="group flex items-baseline gap-5 bg-[var(--p-surface)] px-6 py-6 transition-colors hover:bg-[var(--p-surface-muted)]">
@@ -203,14 +203,14 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
                 <p class="text-xs font-semibold tracking-[0.25em] text-[var(--p-accent)] uppercase">Über uns</p>
                 <span class="pv-heading text-2xl leading-none text-[var(--p-border)]">{num(2)}</span>
               </div>
-              <h2 class="pv-heading mb-6 text-3xl sm:text-4xl lg:text-5xl">Handwerk mit Handschlagqualität</h2>
+              <h2 class="pv-heading mb-6 text-3xl sm:text-4xl lg:text-5xl">Ein Betrieb, auf den Sie sich verlassen können</h2>
               <p class="mb-5 leading-relaxed text-[var(--p-text-2)]">
                 {prospect.businessName} steht für saubere Arbeit, ehrliche Beratung und Termine, die halten.
-                Aus {prospect.town} – für {prospect.town} und die Region.
+                Wir sind aus {prospect.town} und für die Menschen hier in der Region da.
               </p>
               <p class="rounded-[var(--p-radius)] border-l-2 border-[var(--p-accent)] bg-[var(--p-surface)] px-5 py-4 text-sm text-[var(--p-text-2)]">
                 ✎ Hier steht später Ihre Geschichte: seit wann es Ihren Betrieb gibt, wer dahintersteht,
-                was Ihre Kunden an Ihnen schätzen. Ihr Text – ich helfe beim Formulieren.
+                was Ihre Kunden an Ihnen schätzen. Den Text schreiben wir gemeinsam, ich helfe beim Formulieren.
               </p>
             </div>
             <div class="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-surface)]">
@@ -230,14 +230,14 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
           <div class="mb-12 flex items-end justify-between gap-6 border-b border-[var(--p-border)] pb-6">
             <div>
               <p class="mb-3 text-xs font-semibold tracking-[0.25em] text-[var(--p-accent)] uppercase">Referenzen</p>
-              <h2 class="pv-heading max-w-xl text-3xl sm:text-4xl lg:text-5xl">Arbeit, die für sich spricht</h2>
+              <h2 class="pv-heading max-w-xl text-3xl sm:text-4xl lg:text-5xl">Sehen Sie selbst</h2>
             </div>
             <span class="pv-heading hidden text-6xl leading-none text-[var(--p-border)] sm:block lg:text-7xl">{num(3)}</span>
           </div>
           <div class="grid gap-4 sm:grid-cols-3">
             {[0, 1, 2].map((i) => (
               <div class={`flex aspect-square items-center justify-center rounded-[var(--p-radius)] border border-dashed border-[var(--p-border)] bg-[var(--p-surface)] p-6 text-center text-sm text-[var(--p-text-2)] ${i === 1 ? "sm:-translate-y-5" : ""}`}>
-                <span class="max-w-[14ch]">{theme.galleryHint} – Fotos vom Smartphone genügen</span>
+                <span class="max-w-[14ch]">{theme.galleryHint}. Fotos vom Smartphone genügen.</span>
               </div>
             ))}
           </div>
@@ -273,7 +273,7 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
                 <textarea rows="3" placeholder="Worum geht es?" class="w-full rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-bg)] px-4 py-3 text-sm"></textarea>
                 <button type="button" class="w-full rounded-[var(--p-radius)] bg-[var(--p-accent)] px-6 py-3 font-semibold text-[var(--p-on-accent)]">Anfrage senden</button>
               </fieldset>
-              <p class="mt-3 text-center text-xs text-[var(--p-text-2)]">Im Entwurf deaktiviert – auf Ihrer fertigen Website landet jede Anfrage direkt in Ihrem E-Mail-Postfach.</p>
+              <p class="mt-3 text-center text-xs text-[var(--p-text-2)]">Im Entwurf deaktiviert. Auf Ihrer fertigen Website landet jede Anfrage direkt in Ihrem E-Mail-Postfach.</p>
             </form>
           </div>
         </section>
@@ -294,15 +294,15 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
           <p class="mb-3 text-sm font-semibold tracking-widest text-emerald-400 uppercase">DigitalHandwerk · Karlsruhe</p>
           <h2 class="mb-4 font-heading text-3xl text-white sm:text-4xl">Gefällt Ihnen dieser Entwurf?</h2>
           <p class="mb-4 leading-relaxed text-stone-300">
-            Das hier ist ein erster Vorschlag – kein fertiges Produkt. Ihre Website wird genau so,
+            Das hier ist ein erster Vorschlag, kein fertiges Produkt. Ihre Website wird genau so,
             wie Ihr Betrieb sie braucht: mit Ihren Fotos, Ihren Texten, Ihren Farben.
-            Gerne auch größer oder ganz anders – mehr Unterseiten, Bildergalerie,
-            Online-Terminanfrage, ein eigener Stil. Alles ist machbar.
+            Gerne auch größer oder ganz anders, etwa mit mehr Unterseiten, Bildergalerie,
+            Online-Terminanfrage oder einem eigenen Stil. Alles ist machbar.
           </p>
           <p class="mb-8 leading-relaxed text-stone-300">
             Eine komplette Website wie dieser Entwurf: <strong class="text-white">499&nbsp;€ Festpreis</strong>,
-            alles inklusive, online in 2–4 Wochen. Kein Abo, keine versteckten Kosten.
-            Alles, was darüber hinausgeht, besprechen wir im kostenlosen Erstgespräch –
+            alles inklusive, online in 2 bis 4 Wochen. Kein Abo, keine versteckten Kosten.
+            Alles, was darüber hinausgeht, besprechen wir im kostenlosen Erstgespräch.
             Sie bekommen vorab ein faires Angebot.
           </p>
           <div class="flex flex-wrap items-center justify-center gap-4">

@@ -198,7 +198,7 @@ export const trades: Trade[] = [
     serviceType: "Webdesign für Malerbetriebe",
     serviceDescription:
       "Professionelle Websites für Malerbetriebe ab 499 € – mit Referenzgalerie, DSGVO-konform, SEO-optimiert.",
-    servicesHeading: "Für jede Maler-Leistung rankbar",
+    servicesHeading: "Für jede Maler-Leistung gefunden werden",
     servicesIntro:
       "Innenanstrich, Fassade, Wärmedämmung – wer nach einem Maler für ein bestimmtes Projekt sucht, landet auf Ihrer Seite, weil die passenden Begriffe am richtigen Ort stehen.",
     services: [
