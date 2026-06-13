@@ -53,6 +53,7 @@ const heroImage = heroImages[prospect.trade];
 const headline = theme.heroHeadline.replace("{town}", prospect.town);
 const telHref = prospect.phone ? `tel:+49${prospect.phone.replace(/\D/g, "").replace(/^0/, "")}` : "#kontakt";
 const phoneDisplay = prospect.phone ?? "0000 00 00 00";
+const hasPhone = Boolean(prospect.phone);
 
 const headingFont =
   theme.heading === "serif" ? '"Instrument Serif", Georgia, serif' : '"Inter", system-ui, sans-serif';
@@ -76,6 +77,9 @@ const themeStyle = [
   `--p-h-transform:${headingTransform}`,
   `--p-h-tracking:${headingTracking}`,
 ].join(";");
+
+// Decorative section numerals
+const num = (n: number) => String(n).padStart(2, "0");
 
 const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.town} | Entwurf`;
 ---
@@ -106,45 +110,56 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
       </div>
 
       <!-- ===== Mockup: their future website starts here ===== -->
-      <div class="bg-[var(--p-bg)] text-[var(--p-text)]">
+      <div class="pv-grain bg-[var(--p-bg)] text-[var(--p-text)]">
 
         <!-- Nav -->
-        <header class="border-b border-[var(--p-border)] bg-[var(--p-bg)]/95">
-          <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
-            <span class="pv-heading text-xl sm:text-2xl">{prospect.businessName}</span>
+        <header class="sticky top-0 z-40 border-b border-[var(--p-border)] bg-[var(--p-bg)]/85 backdrop-blur-md">
+          <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-3.5 sm:py-4">
+            <span class="pv-heading truncate text-lg sm:text-2xl">{prospect.businessName}</span>
             <nav class="hidden items-center gap-7 text-sm text-[var(--p-text-2)] md:flex">
               <a href="#leistungen" class="transition-colors hover:text-[var(--p-text)]">Leistungen</a>
               <a href="#ueber-uns" class="transition-colors hover:text-[var(--p-text)]">Über uns</a>
               <a href="#referenzen" class="transition-colors hover:text-[var(--p-text)]">Referenzen</a>
               <a href="#kontakt" class="transition-colors hover:text-[var(--p-text)]">Kontakt</a>
             </nav>
-            <a href={telHref} class="rounded-[var(--p-radius)] bg-[var(--p-accent)] px-4 py-2 text-sm font-semibold text-[var(--p-on-accent)] transition-opacity hover:opacity-90">
-              {phoneDisplay}
+            <!-- Fixed-width label → never wraps, even with long numbers / names -->
+            <a
+              href={telHref}
+              class="inline-flex flex-shrink-0 items-center gap-2 rounded-[var(--p-radius)] bg-[var(--p-accent)] px-3.5 py-2 text-sm font-semibold whitespace-nowrap text-[var(--p-on-accent)] transition-opacity hover:opacity-90 sm:px-4"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 16.352V17.5a1.5 1.5 0 01-1.5 1.5H15c-7.18 0-13-5.82-13-13V3.5z" />
+              </svg>
+              <span>Anrufen</span>
             </a>
           </div>
         </header>
 
-        <!-- Hero -->
+        <!-- Hero: full-bleed photo, headline panel over the lighter side (theme-tinted overlay) -->
         <section class="relative overflow-hidden">
           <div class="absolute inset-0">
             <Image src={heroImage} alt="" class="h-full w-full object-cover" widths={[800, 1400]} sizes="100vw" loading="eager" />
             <div class="pv-hero-overlay absolute inset-0"></div>
           </div>
           <div class="relative mx-auto max-w-6xl px-5 py-[clamp(90px,14vw,180px)]">
-            <p class="pv-rise mb-4 inline-block rounded-[var(--p-radius)] bg-[var(--p-accent)] px-3 py-1 text-xs font-semibold tracking-wide text-[var(--p-on-accent)]" style="animation-delay:0ms">
-              {theme.tradeNoun} · {prospect.town}
-            </p>
+            <div class="pv-rise mb-5 flex items-center gap-3" style="animation-delay:0ms">
+              <span class="h-px w-10 flex-shrink-0 bg-[var(--p-accent)]"></span>
+              <span class="text-sm font-semibold tracking-[0.2em] text-[var(--p-accent)] uppercase">{theme.tradeNoun} · {prospect.town}</span>
+            </div>
             <h1 class="pv-heading pv-rise mb-5 max-w-2xl text-4xl sm:text-5xl lg:text-6xl" style="animation-delay:90ms">
               {headline}
             </h1>
-            <p class="pv-rise mb-9 max-w-xl text-lg leading-relaxed" style="animation-delay:180ms">
+            <p class="pv-rise mb-9 max-w-xl text-lg leading-relaxed text-[var(--p-text-2)]" style="animation-delay:180ms">
               {theme.heroSub}
             </p>
-            <div class="pv-rise flex flex-wrap items-center gap-4" style="animation-delay:270ms">
-              <a href={telHref} class="rounded-[var(--p-radius)] bg-[var(--p-accent)] px-6 py-3.5 font-semibold text-[var(--p-on-accent)] shadow-lg transition-transform hover:scale-[1.02]">
-                Jetzt anrufen
+            <div class="pv-rise flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4" style="animation-delay:270ms">
+              <a href={telHref} class="inline-flex items-center justify-center gap-2.5 rounded-[var(--p-radius)] bg-[var(--p-accent)] px-6 py-3.5 font-semibold text-[var(--p-on-accent)] shadow-lg transition-transform hover:scale-[1.02]">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 16.352V17.5a1.5 1.5 0 01-1.5 1.5H15c-7.18 0-13-5.82-13-13V3.5z" />
+                </svg>
+                {hasPhone ? phoneDisplay : "Jetzt anrufen"}
               </a>
-              <a href="#leistungen" class="rounded-[var(--p-radius)] border border-current px-6 py-3.5 font-medium transition-colors hover:bg-[var(--p-surface)]/20">
+              <a href="#leistungen" class="inline-flex items-center justify-center rounded-[var(--p-radius)] border border-current px-6 py-3.5 font-medium transition-colors hover:bg-[var(--p-surface)]/20">
                 Unsere Leistungen
               </a>
             </div>
@@ -161,37 +176,45 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
         </div>
 
         <!-- Leistungen -->
-        <section id="leistungen" class="mx-auto max-w-6xl px-5 py-[clamp(64px,9vw,120px)]">
-          <p class="mb-3 text-sm font-semibold tracking-widest text-[var(--p-accent)] uppercase">Leistungen</p>
-          <h2 class="pv-heading mb-4 max-w-xl text-3xl sm:text-4xl">{servicesHeading}</h2>
+        <section id="leistungen" class="mx-auto max-w-6xl scroll-mt-20 px-5 py-[clamp(64px,9vw,128px)]">
+          <div class="mb-12 flex items-end justify-between gap-6 border-b border-[var(--p-border)] pb-6">
+            <div>
+              <p class="mb-3 text-xs font-semibold tracking-[0.25em] text-[var(--p-accent)] uppercase">Leistungen</p>
+              <h2 class="pv-heading max-w-xl text-3xl sm:text-4xl lg:text-5xl">{servicesHeading}</h2>
+            </div>
+            <span class="pv-heading hidden text-6xl leading-none text-[var(--p-border)] sm:block lg:text-7xl">{num(1)}</span>
+          </div>
           <p class="mb-12 max-w-xl text-[var(--p-text-2)]">Alles aus einer Hand – sprechen Sie uns an, auch wenn Ihr Anliegen hier nicht dabei ist.</p>
-          <div class="grid gap-4 sm:grid-cols-2">
+          <div class="grid gap-px overflow-hidden rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-border)] sm:grid-cols-2">
             {services.map((service, i) => (
-              <div class="flex items-center gap-5 rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-surface)] px-6 py-5">
-                <span class="pv-heading text-2xl text-[var(--p-accent)]">{String(i + 1).padStart(2, "0")}</span>
-                <span class="font-medium">{service}</span>
+              <div class="group flex items-baseline gap-5 bg-[var(--p-surface)] px-6 py-6 transition-colors hover:bg-[var(--p-surface-muted)]">
+                <span class="pv-heading text-2xl text-[var(--p-accent)] tabular-nums transition-transform group-hover:translate-x-0.5 sm:text-3xl">{num(i + 1)}</span>
+                <span class="self-center font-medium">{service}</span>
               </div>
             ))}
           </div>
         </section>
 
         <!-- Über uns -->
-        <section id="ueber-uns" class="bg-[var(--p-surface-muted)]">
-          <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-[clamp(64px,9vw,120px)] md:grid-cols-[1.1fr_0.9fr]">
+        <section id="ueber-uns" class="scroll-mt-20 bg-[var(--p-surface-muted)]">
+          <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-[clamp(64px,9vw,128px)] md:grid-cols-[1.05fr_0.95fr] lg:gap-16">
             <div>
-              <p class="mb-3 text-sm font-semibold tracking-widest text-[var(--p-accent)] uppercase">Über uns</p>
-              <h2 class="pv-heading mb-5 text-3xl sm:text-4xl">Handwerk mit Handschlagqualität</h2>
-              <p class="mb-4 leading-relaxed text-[var(--p-text-2)]">
+              <div class="mb-3 flex items-center gap-4">
+                <p class="text-xs font-semibold tracking-[0.25em] text-[var(--p-accent)] uppercase">Über uns</p>
+                <span class="pv-heading text-2xl leading-none text-[var(--p-border)]">{num(2)}</span>
+              </div>
+              <h2 class="pv-heading mb-6 text-3xl sm:text-4xl lg:text-5xl">Handwerk mit Handschlagqualität</h2>
+              <p class="mb-5 leading-relaxed text-[var(--p-text-2)]">
                 {prospect.businessName} steht für saubere Arbeit, ehrliche Beratung und Termine, die halten.
                 Aus {prospect.town} – für {prospect.town} und die Region.
               </p>
-              <p class="rounded-[var(--p-radius)] border border-dashed border-[var(--p-accent)] bg-[var(--p-surface)] px-4 py-3 text-sm text-[var(--p-text-2)]">
+              <p class="rounded-[var(--p-radius)] border-l-2 border-[var(--p-accent)] bg-[var(--p-surface)] px-5 py-4 text-sm text-[var(--p-text-2)]">
                 ✎ Hier steht später Ihre Geschichte: seit wann es Ihren Betrieb gibt, wer dahintersteht,
                 was Ihre Kunden an Ihnen schätzen. Ihr Text – ich helfe beim Formulieren.
               </p>
             </div>
-            <div class="flex aspect-[4/3] items-center justify-center rounded-[var(--p-radius)] border-2 border-dashed border-[var(--p-border)] bg-[var(--p-surface)] text-center">
-              <div class="px-6 text-[var(--p-text-2)]">
+            <div class="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-surface)]">
+              <div class="px-6 text-center text-[var(--p-text-2)]">
                 <svg class="mx-auto mb-3 h-10 w-10 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
@@ -203,32 +226,47 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
         </section>
 
         <!-- Referenzen / Galerie -->
-        <section id="referenzen" class="mx-auto max-w-6xl px-5 py-[clamp(64px,9vw,120px)]">
-          <p class="mb-3 text-sm font-semibold tracking-widest text-[var(--p-accent)] uppercase">Referenzen</p>
-          <h2 class="pv-heading mb-12 text-3xl sm:text-4xl">Arbeit, die für sich spricht</h2>
+        <section id="referenzen" class="mx-auto max-w-6xl scroll-mt-20 px-5 py-[clamp(64px,9vw,128px)]">
+          <div class="mb-12 flex items-end justify-between gap-6 border-b border-[var(--p-border)] pb-6">
+            <div>
+              <p class="mb-3 text-xs font-semibold tracking-[0.25em] text-[var(--p-accent)] uppercase">Referenzen</p>
+              <h2 class="pv-heading max-w-xl text-3xl sm:text-4xl lg:text-5xl">Arbeit, die für sich spricht</h2>
+            </div>
+            <span class="pv-heading hidden text-6xl leading-none text-[var(--p-border)] sm:block lg:text-7xl">{num(3)}</span>
+          </div>
           <div class="grid gap-4 sm:grid-cols-3">
-            {[1, 2, 3].map(() => (
-              <div class="flex aspect-square items-center justify-center rounded-[var(--p-radius)] border-2 border-dashed border-[var(--p-border)] bg-[var(--p-surface)] p-6 text-center text-sm text-[var(--p-text-2)]">
-                {theme.galleryHint} – Fotos vom Smartphone genügen
+            {[0, 1, 2].map((i) => (
+              <div class={`flex aspect-square items-center justify-center rounded-[var(--p-radius)] border border-dashed border-[var(--p-border)] bg-[var(--p-surface)] p-6 text-center text-sm text-[var(--p-text-2)] ${i === 1 ? "sm:-translate-y-5" : ""}`}>
+                <span class="max-w-[14ch]">{theme.galleryHint} – Fotos vom Smartphone genügen</span>
               </div>
             ))}
           </div>
         </section>
 
         <!-- Kontakt -->
-        <section id="kontakt" class="bg-[var(--p-surface-muted)]">
-          <div class="mx-auto grid max-w-6xl gap-10 px-5 py-[clamp(64px,9vw,120px)] md:grid-cols-2">
+        <section id="kontakt" class="scroll-mt-20 bg-[var(--p-surface-muted)]">
+          <div class="mx-auto grid max-w-6xl gap-10 px-5 py-[clamp(64px,9vw,128px)] md:grid-cols-2 lg:gap-16">
             <div>
-              <p class="mb-3 text-sm font-semibold tracking-widest text-[var(--p-accent)] uppercase">Kontakt</p>
-              <h2 class="pv-heading mb-6 text-3xl sm:text-4xl">Sprechen Sie uns an</h2>
-              <a href={telHref} class="pv-heading mb-6 block text-3xl text-[var(--p-accent)] sm:text-4xl">{phoneDisplay}</a>
+              <div class="mb-3 flex items-center gap-4">
+                <p class="text-xs font-semibold tracking-[0.25em] text-[var(--p-accent)] uppercase">Kontakt</p>
+                <span class="pv-heading text-2xl leading-none text-[var(--p-border)]">{num(4)}</span>
+              </div>
+              <h2 class="pv-heading mb-8 text-3xl sm:text-4xl lg:text-5xl">Sprechen Sie uns an</h2>
+              <a href={telHref} class="group mb-8 inline-flex items-center gap-3">
+                <span class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[var(--p-accent)] text-[var(--p-on-accent)]">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 16.352V17.5a1.5 1.5 0 01-1.5 1.5H15c-7.18 0-13-5.82-13-13V3.5z" />
+                  </svg>
+                </span>
+                <span class="pv-heading text-2xl whitespace-nowrap text-[var(--p-accent)] sm:text-3xl">{phoneDisplay}</span>
+              </a>
               <address class="space-y-1 text-[var(--p-text-2)] not-italic">
-                <p>{prospect.businessName}</p>
+                <p class="font-medium text-[var(--p-text)]">{prospect.businessName}</p>
                 {prospect.street && <p>{prospect.street}, {prospect.town}</p>}
                 {!prospect.street && <p>{prospect.town}</p>}
               </address>
             </div>
-            <form class="rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-surface)] p-6">
+            <form class="rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-surface)] p-6 sm:p-8">
               <fieldset disabled class="space-y-4 opacity-80">
                 <input type="text" placeholder="Ihr Name" class="w-full rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-bg)] px-4 py-3 text-sm" />
                 <input type="tel" placeholder="Telefon oder E-Mail" class="w-full rounded-[var(--p-radius)] border border-[var(--p-border)] bg-[var(--p-bg)] px-4 py-3 text-sm" />
@@ -291,12 +329,30 @@ const title = `${prospect.businessName} – ${theme.tradeNoun} in ${prospect.tow
         line-height: 1.1;
         text-wrap: balance;
       }
-      /* hero overlay adapts to light/dark themes */
+      /* hero overlay adapts to light/dark themes — keeps the headline panel legible
+         over the lighter (left) side of the photo while the image stays full-colour right */
       .pv[data-mode="light"] .pv-hero-overlay {
         background: linear-gradient(to right, color-mix(in srgb, var(--p-bg) 92%, transparent) 20%, color-mix(in srgb, var(--p-bg) 55%, transparent) 60%, color-mix(in srgb, var(--p-bg) 25%, transparent));
       }
       .pv[data-mode="dark"] .pv-hero-overlay {
         background: linear-gradient(to right, color-mix(in srgb, var(--p-bg) 94%, transparent) 20%, color-mix(in srgb, var(--p-bg) 70%, transparent) 60%, color-mix(in srgb, var(--p-bg) 35%, transparent));
+      }
+      /* subtle paper/grain texture for atmosphere */
+      .pv-grain {
+        position: relative;
+      }
+      .pv-grain::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+      .pv-grain > * {
+        position: relative;
+        z-index: 1;
       }
       /* staggered hero entrance */
       .pv-rise {
